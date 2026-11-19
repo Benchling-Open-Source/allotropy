@@ -7,7 +7,7 @@
             "data system instance identifier": "237",
             "file name": "example_with_blanks_and_stds.json",
             "software name": "Waters Empower",
-            "software version": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+            "software version": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1234567890",
             "UNC path": "tests/parsers/benchling_empower/testdata/input/example_with_blanks_and_stds.json",
             "custom information document": {
                 "account identifier": "system",
@@ -289,7 +289,7 @@
                                 "SystemCreateDate": "2014-06-19T10:20:59",
                                 "SystemName": "237",
                                 "UseForPrecision": "No",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1234567890",
                                 "NumOfResultsStored": 0,
                                 "ProcessingLocked": false
                             }
@@ -433,7 +433,7 @@
                                 "SystemCreateDate": "2014-06-19T10:20:59",
                                 "SystemName": "237",
                                 "UseForPrecision": "No",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1234567890",
                                 "NumOfResultsStored": 0,
                                 "ProcessingLocked": false
                             }
@@ -578,7 +578,7 @@
                                 "SystemCreateDate": "2014-06-19T10:20:59",
                                 "SystemName": "237",
                                 "UseForPrecision": "No",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1234567890",
                                 "NumOfResultsStored": 0,
                                 "ProcessingLocked": false
                             }
@@ -726,7 +726,7 @@
                                 "SystemCreateDate": "2014-06-19T10:20:59",
                                 "SystemName": "237",
                                 "UseForPrecision": "No",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1234567890",
                                 "NumOfResultsStored": 0,
                                 "ProcessingLocked": false
                             }
@@ -874,7 +874,7 @@
                                 "SystemCreateDate": "2014-06-19T10:20:59",
                                 "SystemName": "237",
                                 "UseForPrecision": "No",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1234567890",
                                 "NumOfResultsStored": 0,
                                 "ProcessingLocked": false
                             }
@@ -1022,7 +1022,7 @@
                                 "SystemCreateDate": "2014-06-19T10:20:59",
                                 "SystemName": "237",
                                 "UseForPrecision": "No",
-                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1609064383",
+                                "AcqSWVersion": "Empower 3 Software Build 3471 SPs Installed: SR2 Hotfix 1 DB ID: 1234567890",
                                 "NumOfResultsStored": 0,
                                 "ProcessingLocked": false
                             }
@@ -1034,7 +1034,7 @@
                         "ELN SectionGUID": "6ed20e99-2801-f5a4-4e21-23f8d2fa9d59",
                         "InstrumentMethodName": "InstrumentMethod1",
                         "InstrumentMethodId": "1150",
-                        "SSM Pattern": "LSN30305077_Combined_Assay_Imp",
+                        "SSM Pattern": "CPD00000001_Combined_Assay_Imp",
                         "Superseded": "False",
                         "Node": "Node1",
                         "measurement method identifier": "example_set_2",
