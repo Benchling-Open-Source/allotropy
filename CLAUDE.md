@@ -69,6 +69,31 @@ Each mapper defines:
 - A `Mapper` class extending `SchemaMapper[Data, Model]` with `map_model()` method
 - The `MANIFEST` URL string for the `field_asm_manifest` field
 
+### Measurement grouping is per-schema, not per-parser
+
+One `MeasurementGroup` becomes one technique document (e.g. one `qpcr document`); each
+`Measurement` in it becomes one `measurement document` inside that group. **A new parser
+must use the same grouping as the parsers already on that schema mapper.** Inverting the
+nesting — many single-measurement groups where the convention is one group with many
+measurements — produces schema-valid but inconsistent output, and `--overwrite` will write
+the wrong shape as the expected JSON, so tests pass and nothing flags it.
+
+Before writing `create_measurement_groups()`, find the existing parsers
+(`grep -rl "schema_mappers.adm.{technique}" src/allotropy/parsers/`), read their grouping
+key, and confirm it against their committed expected JSON.
+
+Established conventions:
+
+| Schema mapper | One `MeasurementGroup` | One `Measurement` |
+|---|---|---|
+| `adm.pcr.rec._2024._09.qpcr` | one well | one target / reporter-dye channel in that well |
+
+For qPCR, group source rows with `df.groupby("Well")` — the rows are one-per-target, so a
+row-per-group loop is wrong. This holds even when the file has no target column (CFX
+Maestro emits `target DNA description: N/A` and distinguishes measurements by
+`reporter_dye_setting`). See `.claude/skills/parser-generator/skill.md` for the
+verification snippet.
+
 ## Field Naming Conventions
 
 Generated models use these naming patterns:
@@ -115,13 +140,16 @@ Replace all of them, not just the obvious names. Preserve each value's *shape* (
 - Serial numbers, part numbers, asset tags, barcodes
 - Sample, compound, and method names
 - Absolute file paths — these usually embed a username and project name (e.g. `C:\CDSProjects\jdtest\Results\...`)
+- Network share paths and hostnames — a UNC path such as `\\company.net\shares\...` names the customer outright; use `example.net`
+- Email addresses and employee or LIMS IDs
 - GUIDs and internal record IDs
+- Office document properties in `.xlsx`/`.docx` files — `docProps/core.xml` (creator, last modified by) and `docProps/custom.xml` (`_AuthorEmail`, `_EmailSubject`, `MSIP_Label_*` sensitivity labels with the customer's tenant ID). Parsers never read these; blank or replace them
 
 **Some identifiers are load-bearing** — the parser matches on them, and renaming one side of a reference silently breaks the fixture. Examples: in `.rslt` bundles the ACAML `TraceID` GUIDs must equal the `.dx` member filenames, and signal names like `DAD1A,Sig=280,4 Ref=off` are parsed for detector wavelength and bandwidth. Rename such values across every reference at once, or leave them alone.
 
 Shape matters for behavior too: an instrument name of `Kaisla` and one of `Luxo HPLC` take different code paths, because `brand_name` reads the second whitespace token.
 
-Before committing, grep the fixture **and** the generated expected JSON for every customer string you know of.
+Before committing, grep the fixture **and** the generated expected JSON for every customer string you know of. `tests/testdata_anonymization_test.py` catches corporate UNC hosts, email addresses, and sensitivity labels automatically, but not names, so the manual check is still required.
 
 ### 2. Trim to a representative sample
 

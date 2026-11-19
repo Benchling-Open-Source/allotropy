@@ -110,7 +110,7 @@ jobs:
           echo "Running all tests"
           hatch run test_all.py3.10:pytest -n 2 tests        else
           echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
-          hatch run test_all.py3.10:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
+          hatch run test_all.py3.10:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents tests/testdata_anonymization_test.py
         fi
       timeout-minutes: 15
 
@@ -137,7 +137,7 @@ jobs:
           echo "Running all tests"
           hatch run test_all.py3.11:pytest -n 2 tests        else
           echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
-          hatch run test_all.py3.11:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
+          hatch run test_all.py3.11:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents tests/testdata_anonymization_test.py
         fi
       timeout-minutes: 15
 
@@ -163,7 +163,7 @@ jobs:
           echo "Running all tests"
           hatch run test_all.py3.12:pytest -n 2 tests        else
           echo "Running tests for parser: ${{ needs.detect-changes.outputs.single-parser }}"
-          hatch run test_all.py3.12:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents
+          hatch run test_all.py3.12:pytest -n 2 tests/parsers/${{ needs.detect-changes.outputs.single-parser }} tests/parser_factory_test.py::test_table_contents tests/testdata_anonymization_test.py
         fi
       timeout-minutes: 15
 

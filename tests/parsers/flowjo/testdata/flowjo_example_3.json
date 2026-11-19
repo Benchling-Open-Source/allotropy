@@ -5,7 +5,7 @@
             "ASM file identifier": "flowjo_example_3.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_flowjo",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/flowjo/testdata/flowjo_example_3.wsp",
             "file name": "20250819%202L%20MKABCD.wsp",
             "software name": "FlowJo",
@@ -487,26 +487,43 @@
                                                                                                             ]
                                                                                                         },
                                                                                                         "custom information document": {
-                                                                                                            "group identifier": "All Samples"
+                                                                                                            "group identifier": "All Samples",
+                                                                                                            "parent population by name": "live",
+                                                                                                            "gating path": "A01.fcs/singlet/live/cells",
+                                                                                                            "gating depth": "3",
+                                                                                                            "phenotype": "cells"
                                                                                                         }
                                                                                                     }
                                                                                                 ]
                                                                                             }
                                                                                         ],
                                                                                         "custom information document": {
-                                                                                            "group identifier": "All Samples"
+                                                                                            "group identifier": "All Samples",
+                                                                                            "parent population by name": "singlet",
+                                                                                            "gating path": "A01.fcs/singlet/live",
+                                                                                            "gating depth": "2",
+                                                                                            "phenotype": "live"
                                                                                         }
                                                                                     }
                                                                                 ]
                                                                             }
                                                                         ],
                                                                         "custom information document": {
-                                                                            "group identifier": "All Samples"
+                                                                            "group identifier": "All Samples",
+                                                                            "parent population by name": "A01.fcs",
+                                                                            "gating path": "A01.fcs/singlet",
+                                                                            "gating depth": "1",
+                                                                            "phenotype": "singlet"
                                                                         }
                                                                     }
                                                                 ]
                                                             }
-                                                        ]
+                                                        ],
+                                                        "custom information document": {
+                                                            "gating path": "A01.fcs",
+                                                            "gating depth": "0",
+                                                            "phenotype": "A01.fcs"
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -1048,26 +1065,43 @@
                                                                                                             ]
                                                                                                         },
                                                                                                         "custom information document": {
-                                                                                                            "group identifier": "All Samples"
+                                                                                                            "group identifier": "All Samples",
+                                                                                                            "parent population by name": "live",
+                                                                                                            "gating path": "A02.fcs/singlet/live/cells",
+                                                                                                            "gating depth": "3",
+                                                                                                            "phenotype": "cells"
                                                                                                         }
                                                                                                     }
                                                                                                 ]
                                                                                             }
                                                                                         ],
                                                                                         "custom information document": {
-                                                                                            "group identifier": "All Samples"
+                                                                                            "group identifier": "All Samples",
+                                                                                            "parent population by name": "singlet",
+                                                                                            "gating path": "A02.fcs/singlet/live",
+                                                                                            "gating depth": "2",
+                                                                                            "phenotype": "live"
                                                                                         }
                                                                                     }
                                                                                 ]
                                                                             }
                                                                         ],
                                                                         "custom information document": {
-                                                                            "group identifier": "All Samples"
+                                                                            "group identifier": "All Samples",
+                                                                            "parent population by name": "A02.fcs",
+                                                                            "gating path": "A02.fcs/singlet",
+                                                                            "gating depth": "1",
+                                                                            "phenotype": "singlet"
                                                                         }
                                                                     }
                                                                 ]
                                                             }
-                                                        ]
+                                                        ],
+                                                        "custom information document": {
+                                                            "gating path": "A02.fcs",
+                                                            "gating depth": "0",
+                                                            "phenotype": "A02.fcs"
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -1609,26 +1643,43 @@
                                                                                                             ]
                                                                                                         },
                                                                                                         "custom information document": {
-                                                                                                            "group identifier": "All Samples"
+                                                                                                            "group identifier": "All Samples",
+                                                                                                            "parent population by name": "live",
+                                                                                                            "gating path": "A03.fcs/singlet/live/cells",
+                                                                                                            "gating depth": "3",
+                                                                                                            "phenotype": "cells"
                                                                                                         }
                                                                                                     }
                                                                                                 ]
                                                                                             }
                                                                                         ],
                                                                                         "custom information document": {
-                                                                                            "group identifier": "All Samples"
+                                                                                            "group identifier": "All Samples",
+                                                                                            "parent population by name": "singlet",
+                                                                                            "gating path": "A03.fcs/singlet/live",
+                                                                                            "gating depth": "2",
+                                                                                            "phenotype": "live"
                                                                                         }
                                                                                     }
                                                                                 ]
                                                                             }
                                                                         ],
                                                                         "custom information document": {
-                                                                            "group identifier": "All Samples"
+                                                                            "group identifier": "All Samples",
+                                                                            "parent population by name": "A03.fcs",
+                                                                            "gating path": "A03.fcs/singlet",
+                                                                            "gating depth": "1",
+                                                                            "phenotype": "singlet"
                                                                         }
                                                                     }
                                                                 ]
                                                             }
-                                                        ]
+                                                        ],
+                                                        "custom information document": {
+                                                            "gating path": "A03.fcs",
+                                                            "gating depth": "0",
+                                                            "phenotype": "A03.fcs"
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -2170,26 +2221,43 @@
                                                                                                             ]
                                                                                                         },
                                                                                                         "custom information document": {
-                                                                                                            "group identifier": "All Samples"
+                                                                                                            "group identifier": "All Samples",
+                                                                                                            "parent population by name": "live",
+                                                                                                            "gating path": "A04.fcs/singlet/live/cells",
+                                                                                                            "gating depth": "3",
+                                                                                                            "phenotype": "cells"
                                                                                                         }
                                                                                                     }
                                                                                                 ]
                                                                                             }
                                                                                         ],
                                                                                         "custom information document": {
-                                                                                            "group identifier": "All Samples"
+                                                                                            "group identifier": "All Samples",
+                                                                                            "parent population by name": "singlet",
+                                                                                            "gating path": "A04.fcs/singlet/live",
+                                                                                            "gating depth": "2",
+                                                                                            "phenotype": "live"
                                                                                         }
                                                                                     }
                                                                                 ]
                                                                             }
                                                                         ],
                                                                         "custom information document": {
-                                                                            "group identifier": "All Samples"
+                                                                            "group identifier": "All Samples",
+                                                                            "parent population by name": "A04.fcs",
+                                                                            "gating path": "A04.fcs/singlet",
+                                                                            "gating depth": "1",
+                                                                            "phenotype": "singlet"
                                                                         }
                                                                     }
                                                                 ]
                                                             }
-                                                        ]
+                                                        ],
+                                                        "custom information document": {
+                                                            "gating path": "A04.fcs",
+                                                            "gating depth": "0",
+                                                            "phenotype": "A04.fcs"
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -2731,26 +2799,43 @@
                                                                                                             ]
                                                                                                         },
                                                                                                         "custom information document": {
-                                                                                                            "group identifier": "All Samples"
+                                                                                                            "group identifier": "All Samples",
+                                                                                                            "parent population by name": "live",
+                                                                                                            "gating path": "A05.fcs/singlet/live/cells",
+                                                                                                            "gating depth": "3",
+                                                                                                            "phenotype": "cells"
                                                                                                         }
                                                                                                     }
                                                                                                 ]
                                                                                             }
                                                                                         ],
                                                                                         "custom information document": {
-                                                                                            "group identifier": "All Samples"
+                                                                                            "group identifier": "All Samples",
+                                                                                            "parent population by name": "singlet",
+                                                                                            "gating path": "A05.fcs/singlet/live",
+                                                                                            "gating depth": "2",
+                                                                                            "phenotype": "live"
                                                                                         }
                                                                                     }
                                                                                 ]
                                                                             }
                                                                         ],
                                                                         "custom information document": {
-                                                                            "group identifier": "All Samples"
+                                                                            "group identifier": "All Samples",
+                                                                            "parent population by name": "A05.fcs",
+                                                                            "gating path": "A05.fcs/singlet",
+                                                                            "gating depth": "1",
+                                                                            "phenotype": "singlet"
                                                                         }
                                                                     }
                                                                 ]
                                                             }
-                                                        ]
+                                                        ],
+                                                        "custom information document": {
+                                                            "gating path": "A05.fcs",
+                                                            "gating depth": "0",
+                                                            "phenotype": "A05.fcs"
+                                                        }
                                                     }
                                                 ]
                                             }
@@ -3292,26 +3377,43 @@
                                                                                                             ]
                                                                                                         },
                                                                                                         "custom information document": {
-                                                                                                            "group identifier": "All Samples"
+                                                                                                            "group identifier": "All Samples",
+                                                                                                            "parent population by name": "live",
+                                                                                                            "gating path": "A06.fcs/singlet/live/cells",
+                                                                                                            "gating depth": "3",
+                                                                                                            "phenotype": "cells"
                                                                                                         }
                                                                                                     }
                                                                                                 ]
                                                                                             }
                                                                                         ],
                                                                                         "custom information document": {
-                                                                                            "group identifier": "All Samples"
+                                                                                            "group identifier": "All Samples",
+                                                                                            "parent population by name": "singlet",
+                                                                                            "gating path": "A06.fcs/singlet/live",
+                                                                                            "gating depth": "2",
+                                                                                            "phenotype": "live"
                                                                                         }
                                                                                     }
                                                                                 ]
                                                                             }
                                                                         ],
                                                                         "custom information document": {
-                                                                            "group identifier": "All Samples"
+                                                                            "group identifier": "All Samples",
+                                                                            "parent population by name": "A06.fcs",
+                                                                            "gating path": "A06.fcs/singlet",
+                                                                            "gating depth": "1",
+                                                                            "phenotype": "singlet"
                                                                         }
                                                                     }
                                                                 ]
                                                             }
-                                                        ]
+                                                        ],
+                                                        "custom information document": {
+                                                            "gating path": "A06.fcs",
+                                                            "gating depth": "0",
+                                                            "phenotype": "A06.fcs"
+                                                        }
                                                     }
                                                 ]
                                             }
