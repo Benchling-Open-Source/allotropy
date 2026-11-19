@@ -390,12 +390,55 @@ class TypeResolver:
         if merged_required:
             merged["required"] = merged_required
         return self.generate_dataclass(
-            module, schema_url, class_name, merged, base_classes=base_classes
+            module,
+            schema_url,
+            class_name,
+            merged,
+            base_classes=base_classes,
+            base_refs=[item["$ref"] for item in all_of if "$ref" in item],
         )
 
     # -------------------------------------------------------------------------
     # Object → dataclass generation
     # -------------------------------------------------------------------------
+
+    def _inherited_property_names(
+        self, schema_url: str, refs: list[str], seen: set[str] | None = None
+    ) -> set[str] | None:
+        """Property names declared by the schemas behind ``refs``, or None if any is unresolvable."""
+        if not refs:
+            return None
+        seen = set() if seen is None else seen
+        names: set[str] = set()
+        for ref in refs:
+            ref_url = ref_base_url(ref) or schema_url
+            key = f"{ref_url}#{ref.partition('#')[2]}"
+            if key in seen:
+                continue
+            seen.add(key)
+            ref_schema = self._merger.resolve_ref_to_schema(schema_url, ref)
+            if ref_schema is None:
+                return None
+            parts = [ref_schema, *ref_schema.get("allOf", [])]
+            nested_refs: list[str] = []
+            for part in parts:
+                if not isinstance(part, dict):
+                    continue
+                names.update(part.get("properties", {}))
+                if "$ref" in part:
+                    nested_refs.append(part["$ref"])
+                for variant_key in ("anyOf", "oneOf"):
+                    for variant in part.get(variant_key, []):
+                        if isinstance(variant, dict):
+                            names.update(variant.get("properties", {}))
+                            if "$ref" in variant:
+                                nested_refs.append(variant["$ref"])
+            if nested_refs:
+                nested = self._inherited_property_names(ref_url, nested_refs, seen)
+                if nested is None:
+                    return None
+                names |= nested
+        return names
 
     def generate_dataclass(
         self,
@@ -405,9 +448,14 @@ class TypeResolver:
         schema: dict[str, Any],
         *,
         base_classes: list[str] | None = None,
+        base_refs: list[str] | None = None,
         frozen: bool = True,
     ) -> GeneratedClass:
-        """Generate a frozen dataclass from an object schema."""
+        """Generate a frozen dataclass from an object schema.
+
+        ``base_refs`` are the ``$ref``s behind ``base_classes``; required properties they declare
+        are inherited rather than redeclared.
+        """
         properties = schema.get("properties", {})
         required = set(schema.get("required", []))
 
@@ -435,6 +483,27 @@ class TypeResolver:
                 )
             )
             deps |= extract_type_references(type_str)
+
+        # A schema can require a property it does not declare (e.g. REC 2026/03 qpcr requires
+        # "experimental data identifier" on the measurement aggregate document). Output must still
+        # contain it to validate, so emit an untyped required field.
+        inherited = self._inherited_property_names(schema_url, base_refs or [])
+        if inherited is not None or not base_classes:
+            for prop_name in schema.get("required", []):
+                if (
+                    prop_name in properties
+                    or prop_name in (inherited or set())
+                    or any(prop_name.startswith(p) for p in ASM_METADATA_PREFIXES)
+                ):
+                    continue
+                fields_list.append(
+                    FieldDef(
+                        python_name=property_name_to_python(prop_name),
+                        type_str="Any",
+                        json_name=prop_name,
+                        is_required=True,
+                    )
+                )
 
         return GeneratedClass(
             name=class_name,
@@ -729,7 +798,12 @@ class TypeResolver:
             if merged_required:
                 merged["required"] = sorted(set(merged_required))
             cls = self.generate_dataclass(
-                module, schema_url, inline_class_name, merged, base_classes=base_classes
+                module,
+                schema_url,
+                inline_class_name,
+                merged,
+                base_classes=base_classes,
+                base_refs=base_refs,
             )
             module.classes.append(cls)
             return inline_class_name
@@ -894,7 +968,12 @@ class TypeResolver:
             if merged_required:
                 merged["required"] = sorted(set(merged_required))
             cls = self.generate_dataclass(
-                module, schema_url, item_class_name, merged, base_classes=base_classes
+                module,
+                schema_url,
+                item_class_name,
+                merged,
+                base_classes=base_classes,
+                base_refs=base_refs,
             )
         elif base_classes:
             cls = GeneratedClass(

@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
         "calculated data aggregate document": {
             "calculated data document": [
@@ -553,7 +553,7 @@
             "ASM file identifier": "appbio_quantstudio_multiple_cal_doc_wells.json",
             "data system instance identifier": "localhost",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "appbio_quantstudio_multiple_cal_doc_wells.txt",
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
@@ -685,7 +685,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GROUP1"
+                            "target DNA description": "GROUP1",
+                            "experimental data identifier": "QuantStudio 96-Well Standard Curve Example"
                         },
                         {
                             "device control aggregate document": {
@@ -804,7 +805,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GROUP2"
+                            "target DNA description": "GROUP2",
+                            "experimental data identifier": "QuantStudio 96-Well Standard Curve Example"
                         }
                     ],
                     "experimental data identifier": "QuantStudio 96-Well Standard Curve Example",
@@ -940,7 +942,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GROUP1"
+                            "target DNA description": "GROUP1",
+                            "experimental data identifier": "QuantStudio 96-Well Standard Curve Example"
                         },
                         {
                             "device control aggregate document": {
@@ -1059,7 +1062,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GROUP2"
+                            "target DNA description": "GROUP2",
+                            "experimental data identifier": "QuantStudio 96-Well Standard Curve Example"
                         }
                     ],
                     "experimental data identifier": "QuantStudio 96-Well Standard Curve Example",

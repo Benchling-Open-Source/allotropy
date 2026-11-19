@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any
 
 from allotropy.allotrope.models.adm.core.rec._2025._03.core import (
     TBooleanValue,
@@ -32,4 +33,5 @@ class DeviceControlAggregateDocument:
 
 @dataclass(frozen=True, kw_only=True)
 class MeasurementDocumentItems:
+    image_aggregate_document: Any
     device_control_aggregate_document: DeviceControlAggregateDocument | None = None
