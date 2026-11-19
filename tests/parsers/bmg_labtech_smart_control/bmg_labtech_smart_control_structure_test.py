@@ -4,7 +4,7 @@ from unittest.mock import MagicMock, patch
 
 import pandas as pd
 
-from allotropy.allotrope.models.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.rec._2026._03.plate_reader import (
     SampleRoleType,
 )
 from allotropy.named_file_contents import NamedFileContents
@@ -171,13 +171,10 @@ def test_bmg_labtech_smart_control_reader(mock_read_excel: MagicMock) -> None:
     assert len(measurement_groups) == 8
     assert measurement_groups[0].analyst == "user"
     assert measurement_groups[0].measurement_time == "11/6/2024 11:14:00 AM"
-    assert (
-        measurement_groups[0].experimental_data_identifier
-        == "RiboGreen NB-user-5097655-0067"
-    )
     assert measurement_groups[0].experiment_type == "Quant-iT_96 Pico/RiboGreen"
     assert measurement_groups[0].plate_well_count == 96
     measurement = measurement_groups[0].measurements[0]
+    assert measurement.experimental_data_identifier == "RiboGreen NB-user-5097655-0067"
     assert measurement.fluorescence == 48516
     assert measurement.sample_identifier == "Standard S1"
     assert measurement.sample_role_type == SampleRoleType.standard_sample_role

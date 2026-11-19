@@ -3576,8 +3576,18 @@ class TQuantityValueSquareMetersPerGram(TQuantityValue):
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueSquareMicrometer(TQuantityValue):
+    unit: str = "µm^2"
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueSquareMile(TQuantityValue):
     unit: str = "mi^2"
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueSquarePixel(TQuantityValue):
+    unit: str = "pixel^2"
 
 
 @dataclass(frozen=True, kw_only=True)

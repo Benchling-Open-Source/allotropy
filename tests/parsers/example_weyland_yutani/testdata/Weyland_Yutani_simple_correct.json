@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "data system document": {
             "ASM file identifier": "Weyland_Yutani_simple_correct.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_example_weyland_yutani",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "UNC path": "tests/parsers/example_weyland_yutani/testdata/Weyland_Yutani_simple_correct.csv",
             "file name": "Weyland_Yutani_simple_correct.csv"
         },

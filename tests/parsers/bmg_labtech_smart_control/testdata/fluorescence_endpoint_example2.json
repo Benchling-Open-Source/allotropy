@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1893,7 +1893,7 @@
             "ASM file identifier": "fluorescence_endpoint_example2.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_bmg_labtech_smart_control",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "fluorescence_endpoint_example2.xlsx",
             "software name": "SMART Control",
             "UNC path": "tests/parsers/bmg_labtech_smart_control/testdata/fluorescence_endpoint_example2.xlsx",
@@ -1981,7 +1981,8 @@
                             "fluorescence": {
                                 "value": 8168026.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -1989,14 +1990,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2072,7 +2072,8 @@
                             "fluorescence": {
                                 "value": 8558760.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2080,14 +2081,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2163,7 +2163,8 @@
                             "fluorescence": {
                                 "value": 8447347.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2171,14 +2172,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2250,7 +2250,8 @@
                             "fluorescence": {
                                 "value": 849235.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2258,14 +2259,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2337,7 +2337,8 @@
                             "fluorescence": {
                                 "value": 839060.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2345,14 +2346,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2424,7 +2424,8 @@
                             "fluorescence": {
                                 "value": 844888.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2432,14 +2433,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2511,7 +2511,8 @@
                             "fluorescence": {
                                 "value": 975512.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2519,14 +2520,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2598,7 +2598,8 @@
                             "fluorescence": {
                                 "value": 956755.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2606,14 +2607,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2685,7 +2685,8 @@
                             "fluorescence": {
                                 "value": 921115.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2693,14 +2694,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2772,7 +2772,8 @@
                             "fluorescence": {
                                 "value": 184672.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2780,14 +2781,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2859,7 +2859,8 @@
                             "fluorescence": {
                                 "value": 181550.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2867,14 +2868,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2946,7 +2946,8 @@
                             "fluorescence": {
                                 "value": 184081.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -2954,14 +2955,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3037,7 +3037,8 @@
                             "fluorescence": {
                                 "value": 2295291.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3045,14 +3046,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3128,7 +3128,8 @@
                             "fluorescence": {
                                 "value": 2293683.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3136,14 +3137,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3219,7 +3219,8 @@
                             "fluorescence": {
                                 "value": 2295053.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3227,14 +3228,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3306,7 +3306,8 @@
                             "fluorescence": {
                                 "value": 25723.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3314,14 +3315,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3393,7 +3393,8 @@
                             "fluorescence": {
                                 "value": 26070.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3401,14 +3402,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3480,7 +3480,8 @@
                             "fluorescence": {
                                 "value": 25441.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3488,14 +3489,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3567,7 +3567,8 @@
                             "fluorescence": {
                                 "value": 1115052.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3575,14 +3576,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3654,7 +3654,8 @@
                             "fluorescence": {
                                 "value": 1098210.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3662,14 +3663,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3741,7 +3741,8 @@
                             "fluorescence": {
                                 "value": 1064905.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3749,14 +3750,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3828,7 +3828,8 @@
                             "fluorescence": {
                                 "value": 806732.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3836,14 +3837,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3915,7 +3915,8 @@
                             "fluorescence": {
                                 "value": 807571.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -3923,14 +3924,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4002,7 +4002,8 @@
                             "fluorescence": {
                                 "value": 818794.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4010,14 +4011,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4093,7 +4093,8 @@
                             "fluorescence": {
                                 "value": 565933.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4101,14 +4102,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4184,7 +4184,8 @@
                             "fluorescence": {
                                 "value": 549916.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4192,14 +4193,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4275,7 +4275,8 @@
                             "fluorescence": {
                                 "value": 552949.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4283,14 +4284,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4362,7 +4362,8 @@
                             "fluorescence": {
                                 "value": 18405.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4370,14 +4371,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4449,7 +4449,8 @@
                             "fluorescence": {
                                 "value": 48245.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4457,14 +4458,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4536,7 +4536,8 @@
                             "fluorescence": {
                                 "value": 17406.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4544,14 +4545,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4623,7 +4623,8 @@
                             "fluorescence": {
                                 "value": 1066847.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4631,14 +4632,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4710,7 +4710,8 @@
                             "fluorescence": {
                                 "value": 1059230.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4718,14 +4719,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4797,7 +4797,8 @@
                             "fluorescence": {
                                 "value": 1025687.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4805,14 +4806,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4884,7 +4884,8 @@
                             "fluorescence": {
                                 "value": 932660.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4892,14 +4893,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4971,7 +4971,8 @@
                             "fluorescence": {
                                 "value": 924889.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -4979,14 +4980,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5058,7 +5058,8 @@
                             "fluorescence": {
                                 "value": 939215.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5066,14 +5067,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5149,7 +5149,8 @@
                             "fluorescence": {
                                 "value": 146199.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5157,14 +5158,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5240,7 +5240,8 @@
                             "fluorescence": {
                                 "value": 144508.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5248,14 +5249,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5331,7 +5331,8 @@
                             "fluorescence": {
                                 "value": 144697.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5339,14 +5340,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5418,7 +5418,8 @@
                             "fluorescence": {
                                 "value": 147432.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5426,14 +5427,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5505,7 +5505,8 @@
                             "fluorescence": {
                                 "value": 144514.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5513,14 +5514,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5592,7 +5592,8 @@
                             "fluorescence": {
                                 "value": 145634.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5600,14 +5601,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5679,7 +5679,8 @@
                             "fluorescence": {
                                 "value": 987769.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5687,14 +5688,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5766,7 +5766,8 @@
                             "fluorescence": {
                                 "value": 986078.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5774,14 +5775,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5853,7 +5853,8 @@
                             "fluorescence": {
                                 "value": 947740.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5861,14 +5862,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5940,7 +5940,8 @@
                             "fluorescence": {
                                 "value": 281806.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -5948,14 +5949,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6027,7 +6027,8 @@
                             "fluorescence": {
                                 "value": 276928.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6035,14 +6036,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6114,7 +6114,8 @@
                             "fluorescence": {
                                 "value": 280380.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6122,14 +6123,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6205,7 +6205,8 @@
                             "fluorescence": {
                                 "value": 50324.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6213,14 +6214,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6296,7 +6296,8 @@
                             "fluorescence": {
                                 "value": 49740.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6304,14 +6305,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6387,7 +6387,8 @@
                             "fluorescence": {
                                 "value": 49251.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6395,14 +6396,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6474,7 +6474,8 @@
                             "fluorescence": {
                                 "value": 379194.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6482,14 +6483,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6561,7 +6561,8 @@
                             "fluorescence": {
                                 "value": 376035.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6569,14 +6570,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6648,7 +6648,8 @@
                             "fluorescence": {
                                 "value": 379962.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6656,14 +6657,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6735,7 +6735,8 @@
                             "fluorescence": {
                                 "value": 1020488.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6743,14 +6744,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6822,7 +6822,8 @@
                             "fluorescence": {
                                 "value": 1024806.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6830,14 +6831,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6909,7 +6909,8 @@
                             "fluorescence": {
                                 "value": 1018894.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -6917,14 +6918,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6996,7 +6996,8 @@
                             "fluorescence": {
                                 "value": 874043.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7004,14 +7005,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7083,7 +7083,8 @@
                             "fluorescence": {
                                 "value": 869109.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7091,14 +7092,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7170,7 +7170,8 @@
                             "fluorescence": {
                                 "value": 883519.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7178,14 +7179,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7261,7 +7261,8 @@
                             "fluorescence": {
                                 "value": 23418.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7269,14 +7270,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7352,7 +7352,8 @@
                             "fluorescence": {
                                 "value": 23276.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7360,14 +7361,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7443,7 +7443,8 @@
                             "fluorescence": {
                                 "value": 23395.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7451,14 +7452,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7530,7 +7530,8 @@
                             "fluorescence": {
                                 "value": 497420.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7538,14 +7539,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7617,7 +7617,8 @@
                             "fluorescence": {
                                 "value": 502661.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7625,14 +7626,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7704,7 +7704,8 @@
                             "fluorescence": {
                                 "value": 502326.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7712,14 +7713,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7791,7 +7791,8 @@
                             "fluorescence": {
                                 "value": 1110188.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7799,14 +7800,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7878,7 +7878,8 @@
                             "fluorescence": {
                                 "value": 1106107.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7886,14 +7887,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7965,7 +7965,8 @@
                             "fluorescence": {
                                 "value": 1095541.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -7973,14 +7974,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8052,7 +8052,8 @@
                             "fluorescence": {
                                 "value": 714194.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8060,14 +8061,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8139,7 +8139,8 @@
                             "fluorescence": {
                                 "value": 703628.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8147,14 +8148,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8226,7 +8226,8 @@
                             "fluorescence": {
                                 "value": 716011.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8234,14 +8235,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8317,7 +8317,8 @@
                             "fluorescence": {
                                 "value": 17521.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8325,14 +8326,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8408,7 +8408,8 @@
                             "fluorescence": {
                                 "value": 17211.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8416,14 +8417,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8499,7 +8499,8 @@
                             "fluorescence": {
                                 "value": 16813.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8507,14 +8508,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8586,7 +8586,8 @@
                             "fluorescence": {
                                 "value": 301778.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8594,14 +8595,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8673,7 +8673,8 @@
                             "fluorescence": {
                                 "value": 304769.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8681,14 +8682,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8760,7 +8760,8 @@
                             "fluorescence": {
                                 "value": 307984.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8768,14 +8769,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8847,7 +8847,8 @@
                             "fluorescence": {
                                 "value": 1036267.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8855,14 +8856,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8934,7 +8934,8 @@
                             "fluorescence": {
                                 "value": 1022472.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -8942,14 +8943,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9021,7 +9021,8 @@
                             "fluorescence": {
                                 "value": 1018685.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9029,14 +9030,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9108,7 +9108,8 @@
                             "fluorescence": {
                                 "value": 900584.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9116,14 +9117,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9195,7 +9195,8 @@
                             "fluorescence": {
                                 "value": 899228.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9203,14 +9204,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9282,7 +9282,8 @@
                             "fluorescence": {
                                 "value": 916559.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9290,14 +9291,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9373,7 +9373,8 @@
                             "fluorescence": {
                                 "value": 15375.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9381,14 +9382,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9464,7 +9464,8 @@
                             "fluorescence": {
                                 "value": 15485.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9472,14 +9473,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9555,7 +9555,8 @@
                             "fluorescence": {
                                 "value": 15110.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9563,14 +9564,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9642,7 +9642,8 @@
                             "fluorescence": {
                                 "value": 492584.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9650,14 +9651,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9729,7 +9729,8 @@
                             "fluorescence": {
                                 "value": 482927.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9737,14 +9738,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9816,7 +9816,8 @@
                             "fluorescence": {
                                 "value": 489733.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9824,14 +9825,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9903,7 +9903,8 @@
                             "fluorescence": {
                                 "value": 518622.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9911,14 +9912,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9990,7 +9990,8 @@
                             "fluorescence": {
                                 "value": 517393.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -9998,14 +9999,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10077,7 +10077,8 @@
                             "fluorescence": {
                                 "value": 507833.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -10085,14 +10086,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10164,7 +10164,8 @@
                             "fluorescence": {
                                 "value": 15343.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -10172,14 +10173,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10251,7 +10251,8 @@
                             "fluorescence": {
                                 "value": 15139.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -10259,14 +10260,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10338,7 +10338,8 @@
                             "fluorescence": {
                                 "value": 15882.0,
                                 "unit": "RFU"
-                            }
+                            },
+                            "experimental data identifier": "PicoGreen NB-user-5097655-0069"
                         }
                     ],
                     "measurement time": "2024-11-12T13:06:28+00:00",
@@ -10346,14 +10347,13 @@
                         "value": 96.0,
                         "unit": "#"
                     },
-                    "experimental data identifier": "PicoGreen NB-user-5097655-0069",
                     "experiment type": "96 PicoGreen, Quant-iT",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "Test ID": 11.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "user"
+                "analyst": "user",
+                "custom information document": {
+                    "Test ID": 11.0
+                }
             }
         ]
     }

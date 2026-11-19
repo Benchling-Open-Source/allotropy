@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "data system document": {
             "ASM file identifier": "24-10-16 15-09-52 Luminescence 1536.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_bmg_labtech_mars",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "24-10-16 15-09-52 Luminescence 1536.csv",
             "software name": "BMG MARS",
             "UNC path": "C:\\Program Files (x86)\\BMG\\CLARIOstar\\User\\Data"
@@ -46,12 +46,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -83,12 +83,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -120,12 +120,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -157,12 +157,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -194,12 +194,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -231,12 +231,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -268,12 +268,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -305,12 +305,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -342,12 +342,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -379,12 +379,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -416,12 +416,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -453,12 +453,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -490,12 +490,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -527,12 +527,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -564,12 +564,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -601,12 +601,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -638,12 +638,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -675,12 +675,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -712,12 +712,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -749,12 +749,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -786,12 +786,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -823,12 +823,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -860,12 +860,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -897,12 +897,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -934,12 +934,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -971,12 +971,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1008,12 +1008,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1045,12 +1045,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1082,12 +1082,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1119,12 +1119,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1156,12 +1156,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1193,12 +1193,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1230,12 +1230,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1267,12 +1267,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1304,12 +1304,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1341,12 +1341,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1378,12 +1378,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1415,12 +1415,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1452,12 +1452,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1489,12 +1489,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1526,12 +1526,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1563,12 +1563,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1600,12 +1600,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1637,12 +1637,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1674,12 +1674,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1711,12 +1711,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1748,12 +1748,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1785,12 +1785,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1822,12 +1822,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1859,12 +1859,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1896,12 +1896,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1933,12 +1933,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1970,12 +1970,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2007,12 +2007,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2044,12 +2044,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2081,12 +2081,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2118,12 +2118,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2155,12 +2155,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2192,12 +2192,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2229,12 +2229,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2266,12 +2266,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2303,12 +2303,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2340,12 +2340,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2377,12 +2377,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2414,12 +2414,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2451,12 +2451,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2488,12 +2488,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2525,12 +2525,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2562,12 +2562,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2599,12 +2599,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2636,12 +2636,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2673,12 +2673,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2710,12 +2710,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2747,12 +2747,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2784,12 +2784,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2821,12 +2821,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2858,12 +2858,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2895,12 +2895,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2932,12 +2932,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2969,12 +2969,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3006,12 +3006,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3043,12 +3043,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3080,12 +3080,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3117,12 +3117,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3154,12 +3154,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3191,12 +3191,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3228,12 +3228,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3265,12 +3265,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3302,12 +3302,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3339,12 +3339,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3376,12 +3376,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3413,12 +3413,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3450,12 +3450,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3487,12 +3487,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3524,12 +3524,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3561,12 +3561,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3598,12 +3598,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3635,12 +3635,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3672,12 +3672,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3709,12 +3709,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3746,12 +3746,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3783,12 +3783,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3820,12 +3820,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3857,12 +3857,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3894,12 +3894,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3931,12 +3931,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3968,12 +3968,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4005,12 +4005,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4042,12 +4042,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4079,12 +4079,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4116,12 +4116,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4153,12 +4153,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4190,12 +4190,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4227,12 +4227,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4264,12 +4264,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4301,12 +4301,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4338,12 +4338,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4375,12 +4375,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4412,12 +4412,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4449,12 +4449,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4486,12 +4486,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4523,12 +4523,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4560,12 +4560,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4597,12 +4597,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4634,12 +4634,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4671,12 +4671,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4708,12 +4708,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4745,12 +4745,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4782,12 +4782,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4819,12 +4819,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4856,12 +4856,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4893,12 +4893,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4930,12 +4930,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4967,12 +4967,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5004,12 +5004,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5041,12 +5041,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5078,12 +5078,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5115,12 +5115,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5152,12 +5152,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5189,12 +5189,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5226,12 +5226,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5263,12 +5263,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5300,12 +5300,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5337,12 +5337,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5374,12 +5374,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5411,12 +5411,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5448,12 +5448,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5485,12 +5485,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5522,12 +5522,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5559,12 +5559,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5596,12 +5596,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5633,12 +5633,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5670,12 +5670,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5707,12 +5707,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5744,12 +5744,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5781,12 +5781,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5818,12 +5818,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5855,12 +5855,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5892,12 +5892,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5929,12 +5929,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -5966,12 +5966,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6003,12 +6003,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6040,12 +6040,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6077,12 +6077,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6114,12 +6114,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6151,12 +6151,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6188,12 +6188,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6225,12 +6225,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6262,12 +6262,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6299,12 +6299,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6336,12 +6336,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6373,12 +6373,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6410,12 +6410,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6447,12 +6447,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6484,12 +6484,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6521,12 +6521,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6558,12 +6558,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6595,12 +6595,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6632,12 +6632,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6669,12 +6669,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6706,12 +6706,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6743,12 +6743,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6780,12 +6780,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6817,12 +6817,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6854,12 +6854,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6891,12 +6891,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6928,12 +6928,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -6965,12 +6965,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7002,12 +7002,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7039,12 +7039,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7076,12 +7076,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7113,12 +7113,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7150,12 +7150,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7187,12 +7187,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7224,12 +7224,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7261,12 +7261,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7298,12 +7298,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7335,12 +7335,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7372,12 +7372,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7409,12 +7409,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7446,12 +7446,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7483,12 +7483,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7520,12 +7520,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7557,12 +7557,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7594,12 +7594,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7631,12 +7631,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7668,12 +7668,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7705,12 +7705,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7742,12 +7742,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7779,12 +7779,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7816,12 +7816,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7853,12 +7853,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7890,12 +7890,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7927,12 +7927,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -7964,12 +7964,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8001,12 +8001,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8038,12 +8038,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8075,12 +8075,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8112,12 +8112,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8149,12 +8149,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8186,12 +8186,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8223,12 +8223,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8260,12 +8260,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8297,12 +8297,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8334,12 +8334,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8371,12 +8371,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8408,12 +8408,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8445,12 +8445,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8482,12 +8482,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8519,12 +8519,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8556,12 +8556,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8593,12 +8593,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8630,12 +8630,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8667,12 +8667,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8704,12 +8704,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8741,12 +8741,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8778,12 +8778,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8815,12 +8815,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8852,12 +8852,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8889,12 +8889,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8926,12 +8926,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -8963,12 +8963,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9000,12 +9000,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9037,12 +9037,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9074,12 +9074,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9111,12 +9111,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9148,12 +9148,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9185,12 +9185,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9222,12 +9222,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9259,12 +9259,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9296,12 +9296,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9333,12 +9333,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9370,12 +9370,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9407,12 +9407,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9444,12 +9444,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9481,12 +9481,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9518,12 +9518,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9555,12 +9555,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9592,12 +9592,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9629,12 +9629,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9666,12 +9666,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9703,12 +9703,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9740,12 +9740,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9777,12 +9777,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9814,12 +9814,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9851,12 +9851,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9888,12 +9888,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9925,12 +9925,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9962,12 +9962,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -9999,12 +9999,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10036,12 +10036,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10073,12 +10073,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10110,12 +10110,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10147,12 +10147,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10184,12 +10184,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10221,12 +10221,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10258,12 +10258,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10295,12 +10295,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10332,12 +10332,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10369,12 +10369,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10406,12 +10406,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10443,12 +10443,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10480,12 +10480,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10517,12 +10517,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10554,12 +10554,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10591,12 +10591,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10628,12 +10628,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -10665,12 +10665,12 @@
                         "unit": "#"
                     },
                     "experiment type": "HrpElisa1536",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 412.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "USER"
+                "analyst": "USER",
+                "custom information document": {
+                    "TEST RUN NO.": 412.0
+                }
             }
         ]
     }

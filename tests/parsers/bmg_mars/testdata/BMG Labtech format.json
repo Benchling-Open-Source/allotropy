@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "data system document": {
             "ASM file identifier": "BMG Labtech format.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_bmg_labtech_mars",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "BMG Labtech format.CSV",
             "software name": "BMG MARS",
             "UNC path": "C:\\Users\\Lab user\\Documents\\Discovery\\Data"
@@ -41,7 +41,8 @@
                             "absorbance": {
                                 "value": 0.073,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -49,14 +50,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -83,7 +83,8 @@
                             "absorbance": {
                                 "value": 0.082,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -91,14 +92,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -125,7 +125,8 @@
                             "absorbance": {
                                 "value": 0.08,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -133,14 +134,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -167,7 +167,8 @@
                             "absorbance": {
                                 "value": 0.107,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -175,14 +176,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -209,7 +209,8 @@
                             "absorbance": {
                                 "value": 0.103,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -217,14 +218,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -251,7 +251,8 @@
                             "absorbance": {
                                 "value": 0.111,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -259,14 +260,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -293,7 +293,8 @@
                             "absorbance": {
                                 "value": 0.199,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -301,14 +302,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -335,7 +335,8 @@
                             "absorbance": {
                                 "value": 0.159,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -343,14 +344,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -377,7 +377,8 @@
                             "absorbance": {
                                 "value": 0.104,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -385,14 +386,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -419,7 +419,8 @@
                             "absorbance": {
                                 "value": 0.096,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -427,14 +428,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -461,7 +461,8 @@
                             "absorbance": {
                                 "value": 0.092,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -469,14 +470,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -503,7 +503,8 @@
                             "absorbance": {
                                 "value": 0.089,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -511,14 +512,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -545,7 +545,8 @@
                             "absorbance": {
                                 "value": 0.045,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -553,14 +554,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -587,7 +587,8 @@
                             "absorbance": {
                                 "value": 0.067,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -595,14 +596,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -629,7 +629,8 @@
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -637,14 +638,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -671,7 +671,8 @@
                             "absorbance": {
                                 "value": 0.118,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -679,14 +680,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -713,7 +713,8 @@
                             "absorbance": {
                                 "value": 0.1,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -721,14 +722,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -755,7 +755,8 @@
                             "absorbance": {
                                 "value": 0.086,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -763,14 +764,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -797,7 +797,8 @@
                             "absorbance": {
                                 "value": 0.188,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -805,14 +806,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -839,7 +839,8 @@
                             "absorbance": {
                                 "value": 0.112,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -847,14 +848,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -881,7 +881,8 @@
                             "absorbance": {
                                 "value": 0.124,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -889,14 +890,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -923,7 +923,8 @@
                             "absorbance": {
                                 "value": 0.181,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -931,14 +932,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -965,7 +965,8 @@
                             "absorbance": {
                                 "value": 0.218,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -973,14 +974,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1007,7 +1007,8 @@
                             "absorbance": {
                                 "value": 0.23,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1015,14 +1016,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1049,7 +1049,8 @@
                             "absorbance": {
                                 "value": 0.502,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1057,14 +1058,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1091,7 +1091,8 @@
                             "absorbance": {
                                 "value": 0.065,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1099,14 +1100,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1133,7 +1133,8 @@
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1141,14 +1142,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1175,7 +1175,8 @@
                             "absorbance": {
                                 "value": 0.656,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1183,14 +1184,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1217,7 +1217,8 @@
                             "absorbance": {
                                 "value": 0.501,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1225,14 +1226,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1259,7 +1259,8 @@
                             "absorbance": {
                                 "value": 0.132,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1267,14 +1268,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1301,7 +1301,8 @@
                             "absorbance": {
                                 "value": 0.111,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1309,14 +1310,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1343,7 +1343,8 @@
                             "absorbance": {
                                 "value": 0.142,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1351,14 +1352,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1385,7 +1385,8 @@
                             "absorbance": {
                                 "value": 0.71,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1393,14 +1394,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1427,7 +1427,8 @@
                             "absorbance": {
                                 "value": 0.581,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1435,14 +1436,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1469,7 +1469,8 @@
                             "absorbance": {
                                 "value": 0.541,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1477,14 +1478,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1511,7 +1511,8 @@
                             "absorbance": {
                                 "value": 0.596,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1519,14 +1520,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1553,7 +1553,8 @@
                             "absorbance": {
                                 "value": 0.121,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1561,14 +1562,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1595,7 +1595,8 @@
                             "absorbance": {
                                 "value": 0.121,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1603,14 +1604,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1637,7 +1637,8 @@
                             "absorbance": {
                                 "value": 0.37,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1645,14 +1646,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1679,7 +1679,8 @@
                             "absorbance": {
                                 "value": 0.634,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1687,14 +1688,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1721,7 +1721,8 @@
                             "absorbance": {
                                 "value": 0.677,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1729,14 +1730,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1763,7 +1763,8 @@
                             "absorbance": {
                                 "value": 0.606,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1771,14 +1772,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1805,7 +1805,8 @@
                             "absorbance": {
                                 "value": 0.069,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1813,14 +1814,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1847,7 +1847,8 @@
                             "absorbance": {
                                 "value": 0.666,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1855,14 +1856,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1889,7 +1889,8 @@
                             "absorbance": {
                                 "value": 0.054,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1897,14 +1898,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1931,7 +1931,8 @@
                             "absorbance": {
                                 "value": 0.836,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1939,14 +1940,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -1973,7 +1973,8 @@
                             "absorbance": {
                                 "value": 0.149,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -1981,14 +1982,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2015,7 +2015,8 @@
                             "absorbance": {
                                 "value": 0.168,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2023,14 +2024,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2057,7 +2057,8 @@
                             "absorbance": {
                                 "value": 0.109,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2065,14 +2066,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2099,7 +2099,8 @@
                             "absorbance": {
                                 "value": 0.06,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2107,14 +2108,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2141,7 +2141,8 @@
                             "absorbance": {
                                 "value": 0.09,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2149,14 +2150,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2183,7 +2183,8 @@
                             "absorbance": {
                                 "value": 0.07,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2191,14 +2192,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2225,7 +2225,8 @@
                             "absorbance": {
                                 "value": 0.072,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2233,14 +2234,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2267,7 +2267,8 @@
                             "absorbance": {
                                 "value": 0.059,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2275,14 +2276,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2309,7 +2309,8 @@
                             "absorbance": {
                                 "value": 0.079,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2317,14 +2318,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2351,7 +2351,8 @@
                             "absorbance": {
                                 "value": 0.073,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2359,14 +2360,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2393,7 +2393,8 @@
                             "absorbance": {
                                 "value": 0.062,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2401,14 +2402,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2435,7 +2435,8 @@
                             "absorbance": {
                                 "value": 0.121,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2443,14 +2444,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2477,7 +2477,8 @@
                             "absorbance": {
                                 "value": 0.112,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2485,14 +2486,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2519,7 +2519,8 @@
                             "absorbance": {
                                 "value": 0.112,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2527,14 +2528,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2561,7 +2561,8 @@
                             "absorbance": {
                                 "value": 0.072,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2569,14 +2570,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2603,7 +2603,8 @@
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2611,14 +2612,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2645,7 +2645,8 @@
                             "absorbance": {
                                 "value": 0.064,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2653,14 +2654,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2687,7 +2687,8 @@
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2695,14 +2696,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2729,7 +2729,8 @@
                             "absorbance": {
                                 "value": 0.061,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2737,14 +2738,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2771,7 +2771,8 @@
                             "absorbance": {
                                 "value": 0.06,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2779,14 +2780,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2813,7 +2813,8 @@
                             "absorbance": {
                                 "value": 0.079,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2821,14 +2822,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2855,7 +2855,8 @@
                             "absorbance": {
                                 "value": 0.088,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2863,14 +2864,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2897,7 +2897,8 @@
                             "absorbance": {
                                 "value": 0.082,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2905,14 +2906,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2939,7 +2939,8 @@
                             "absorbance": {
                                 "value": 0.012,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2947,14 +2948,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -2981,7 +2981,8 @@
                             "absorbance": {
                                 "value": 0.068,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -2989,14 +2990,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3023,7 +3023,8 @@
                             "absorbance": {
                                 "value": 0.1,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3031,14 +3032,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3065,7 +3065,8 @@
                             "absorbance": {
                                 "value": 0.314,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3073,14 +3074,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3107,7 +3107,8 @@
                             "absorbance": {
                                 "value": 0.056,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3115,14 +3116,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3149,7 +3149,8 @@
                             "absorbance": {
                                 "value": 0.057,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3157,14 +3158,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3191,7 +3191,8 @@
                             "absorbance": {
                                 "value": 0.376,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3199,14 +3200,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3233,7 +3233,8 @@
                             "absorbance": {
                                 "value": 0.411,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3241,14 +3242,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3275,7 +3275,8 @@
                             "absorbance": {
                                 "value": 0.075,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3283,14 +3284,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3317,7 +3317,8 @@
                             "absorbance": {
                                 "value": 0.081,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3325,14 +3326,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3359,7 +3359,8 @@
                             "absorbance": {
                                 "value": 0.091,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3367,14 +3368,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3401,7 +3401,8 @@
                             "absorbance": {
                                 "value": 0.121,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3409,14 +3410,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3443,7 +3443,8 @@
                             "absorbance": {
                                 "value": 0.41,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3451,14 +3452,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3485,7 +3485,8 @@
                             "absorbance": {
                                 "value": 0.212,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3493,14 +3494,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3527,7 +3527,8 @@
                             "absorbance": {
                                 "value": 0.212,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3535,14 +3536,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3569,7 +3569,8 @@
                             "absorbance": {
                                 "value": 0.422,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3577,14 +3578,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3611,7 +3611,8 @@
                             "absorbance": {
                                 "value": 0.224,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3619,14 +3620,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3653,7 +3653,8 @@
                             "absorbance": {
                                 "value": 0.115,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3661,14 +3662,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3695,7 +3695,8 @@
                             "absorbance": {
                                 "value": 0.278,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3703,14 +3704,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3737,7 +3737,8 @@
                             "absorbance": {
                                 "value": 0.377,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3745,14 +3746,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3779,7 +3779,8 @@
                             "absorbance": {
                                 "value": 0.385,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3787,14 +3788,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3821,7 +3821,8 @@
                             "absorbance": {
                                 "value": 0.056,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3829,14 +3830,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3863,7 +3863,8 @@
                             "absorbance": {
                                 "value": 0.377,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3871,14 +3872,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3905,7 +3905,8 @@
                             "absorbance": {
                                 "value": 0.107,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3913,14 +3914,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3947,7 +3947,8 @@
                             "absorbance": {
                                 "value": 0.462,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3955,14 +3956,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -3989,7 +3989,8 @@
                             "absorbance": {
                                 "value": 0.116,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -3997,14 +3998,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             },
             {
                 "measurement aggregate document": {
@@ -4031,7 +4031,8 @@
                             "absorbance": {
                                 "value": 0.207,
                                 "unit": "mAU"
-                            }
+                            },
+                            "experimental data identifier": "Plate 1"
                         }
                     ],
                     "measurement time": "2021-05-14T15:29:50+00:00",
@@ -4039,14 +4040,13 @@
                         "value": 104,
                         "unit": "#"
                     },
-                    "experimental data identifier": "Plate 1",
                     "experiment type": "xxxxxxxxxxxxx",
-                    "container type": "well plate",
-                    "custom information document": {
-                        "TEST RUN NO.": 445.0
-                    }
+                    "container type": "well plate"
                 },
-                "analyst": "Discovery"
+                "analyst": "Discovery",
+                "custom information document": {
+                    "TEST RUN NO.": 445.0
+                }
             }
         ]
     }

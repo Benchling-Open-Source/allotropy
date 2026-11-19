@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2024/06/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "data system document": {
             "ASM file identifier": "Magellan_Pro_7_5_compact_metadata.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_tecan_magellan",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "Magellan_Pro_7_5_compact_metadata.xlsx",
             "software name": "Magellan",
             "UNC path": "tests/parsers/tecan_magellan/testdata/Magellan_Pro_7_5_compact_metadata.xlsx"
@@ -51,7 +51,9 @@
                             "absorbance": {
                                 "value": 0.1,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp"
                         }
                     ],
                     "measurement time": "2025-01-01T10:00:00+00:00",
@@ -59,8 +61,6 @@
                         "value": 4,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Example User"
@@ -99,7 +99,9 @@
                             "absorbance": {
                                 "value": 0.2,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp"
                         }
                     ],
                     "measurement time": "2025-01-01T10:00:00+00:00",
@@ -107,8 +109,6 @@
                         "value": 4,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Example User"
@@ -147,7 +147,9 @@
                             "absorbance": {
                                 "value": 0.3,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp"
                         }
                     ],
                     "measurement time": "2025-01-01T10:00:00+00:00",
@@ -155,8 +157,6 @@
                         "value": 4,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Example User"
@@ -195,7 +195,9 @@
                             "absorbance": {
                                 "value": 0.4,
                                 "unit": "mAU"
-                            }
+                            },
+                            "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
+                            "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp"
                         }
                     ],
                     "measurement time": "2025-01-01T10:00:00+00:00",
@@ -203,8 +205,6 @@
                         "value": 4,
                         "unit": "#"
                     },
-                    "analytical method identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\mth\\Example.mth",
-                    "experimental data identifier": "C:\\Users\\Public\\Documents\\Tecan\\Magellan Pro\\wsp\\Example.wsp",
                     "container type": "well plate"
                 },
                 "analyst": "Example User"

@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2025/03/plate-reader.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/REC/2026/03/plate-reader.manifest",
     "plate reader aggregate document": {
         "calculated data aggregate document": {
             "calculated data document": [
@@ -5769,7 +5769,7 @@
             "ASM file identifier": "N/A",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_molecular_devices_softmax_pro",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "UNC path": "tests/parsers/moldev_softmax_pro/testdata/partial_plate_with_empty_values.txt",
             "file name": "partial_plate_with_empty_values.txt",
             "software name": "SoftMax Pro"

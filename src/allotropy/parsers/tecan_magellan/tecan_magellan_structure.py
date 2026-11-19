@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 from typing import Any
 
-from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2024._06.plate_reader import (
+from allotropy.allotrope.schema_mappers.adm.plate_reader.rec._2026._03.plate_reader import (
     ErrorDocument,
     Measurement,
     MeasurementGroup,
@@ -266,6 +266,8 @@ def create_measurement_groups(
                 detector_wavelength_setting=settings.wavelength_setting,
                 error_document=errors,
                 device_control_custom_info=settings.custom_info,
+                analytical_method_identifier=metadata.analytical_method_identifier,
+                experimental_data_identifier=metadata.experimental_data_identifier,
             )
         )
 
@@ -274,7 +276,5 @@ def create_measurement_groups(
         plate_well_count=well_count,
         measurement_time=metadata.measurement_time,
         analyst=metadata.analyst,
-        analytical_method_identifier=metadata.analytical_method_identifier,
-        experimental_data_identifier=metadata.experimental_data_identifier,
         custom_info=data.get_unread(),
     )
