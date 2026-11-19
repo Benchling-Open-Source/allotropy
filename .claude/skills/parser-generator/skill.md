@@ -118,6 +118,98 @@ Create dataclasses for:
   - `create_measurement_groups()` - Build MeasurementGroup list
   - `create_calculated_data()` - Build calculated data (if applicable)
 
+### Measurement Grouping — match the existing parsers for that schema
+
+`MeasurementGroup` becomes one technique document (e.g. one `qpcr document`); each
+`Measurement` inside it becomes one `measurement document`. **Inverting this nesting is
+the most common structural error in a new parser** — many measurement groups holding one
+measurement each, where the convention is one group holding many measurements (or vice
+versa). Nothing catches it automatically: the ASM output is schema-valid either way, and
+`--overwrite` cheerfully writes the wrong shape as the expected JSON, so the test passes
+and the parser ships producing output that doesn't line up with every other parser for
+that schema.
+
+**Before writing `create_measurement_groups()`, derive the convention from the parsers
+that already use the same schema mapper:**
+
+1. Find them:
+   ```bash
+   grep -rl "schema_mappers.adm.{technique}" src/allotropy/parsers/
+   ```
+2. Read each one's `create_measurement_groups()` and note **what one group represents** —
+   the grouping key (a well, a sample, an injection, a plate) and what varies between the
+   measurements within a group.
+3. Confirm it empirically against their committed expected JSON with the check below, then
+   run the same check on your new parser's output and require the same shape.
+
+If your parser's shape legitimately differs (the instrument reports something the others
+don't), say so explicitly in the PR description with the reason. Do not silently diverge.
+
+#### Known conventions
+
+| Schema mapper | One `MeasurementGroup` (technique document) | One `Measurement` (measurement document) |
+|---|---|---|
+| `adm.pcr.rec._2024._09.qpcr` | **one well** | **one target / reporter-dye channel within that well** |
+
+Verified across all committed expected JSON for `appbio_quantstudio`,
+`appbio_quantstudio_designandanalysis`, `cfxmaestro`, and `thermo_fisher_diomni`: every
+`qpcr document` covers exactly one well, no well is split across two documents, and a
+document holds 1–4 measurements — one per target. Source rows in these files are usually
+one-per-target, so grouping is explicit:
+
+```python
+for _, well_data in measurements_data.groupby("Well"):
+    measurements = [_create_measurement(row) for _, row in well_data.iterrows()]
+    measurement_groups.append(MeasurementGroup(measurements=measurements, ...))
+```
+
+Anti-pattern for qPCR — one group per source row, yielding N single-measurement `qpcr
+document`s for the same well:
+
+```python
+# WRONG for qPCR: inverts the nesting
+for _, row in measurements_data.iterrows():
+    groups.append(MeasurementGroup(measurements=[_create_measurement(row)], ...))
+```
+
+When a target column is absent (CFX Maestro reports `target DNA description` as `N/A`),
+measurements within the well are still one-per-fluorophore, distinguished by
+`reporter_dye_setting`. Group by well regardless.
+
+For any other schema, fill in the convention by inspecting existing parsers — do not
+assume it matches qPCR. Grouping keys differ by technique.
+
+#### Checking document nesting
+
+Run this against existing parsers' expected JSON to learn the convention, and against
+yours to verify it matches:
+
+```bash
+python3 - tests/parsers/{parser_name}/testdata/*.json <<'EOF'
+import collections, json, sys
+
+for path in sys.argv[1:]:
+    doc = json.load(open(path))
+    agg = [v for k, v in doc.items() if k.endswith("aggregate document")][0]
+    docs = [v for k, v in agg.items() if k.endswith("document") and isinstance(v, list)][0]
+    n_meas, groups = collections.Counter(), []
+    for d in docs:
+        mds = d["measurement aggregate document"]["measurement document"]
+        n_meas[len(mds)] += 1
+        groups.append({md.get("sample document", {}).get("well location identifier") for md in mds})
+    multi = sum(1 for g in groups if len(g) > 1)
+    singles = [next(iter(g)) for g in groups if len(g) == 1]
+    dupes = [w for w, c in collections.Counter(singles).items() if c > 1]
+    print(f"{len(docs):>5} technique docs | measurements/doc {dict(sorted(n_meas.items()))} "
+          f"| docs spanning >1 well: {multi} | wells in >1 doc: {len(dupes)} | {path.split('/')[-1]}")
+EOF
+```
+
+For qPCR, both `docs spanning >1 well` and `wells in >1 doc` must be `0`, and
+`measurements/doc` should equal the number of targets per well in the source file. If you
+see `measurements/doc {1: N}` where the input has multiple targets per well, the nesting
+is inverted.
+
 ### Parser Generation
 
 Generate `VendorParser` subclass with:
@@ -199,16 +291,22 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 - [ ] Confirm or select schema with `list_schemas.py`
 - [ ] Generate parser using `create_parser.py`
 - [ ] Review and adjust generated code
+- [ ] Determine the `MeasurementGroup` / `Measurement` convention from existing parsers for
+      the same schema mapper, and match it (see "Measurement Grouping")
 - [ ] Set `SUPPORTED_DETECTION_MODES` to the correct value for the instrument
 - [ ] Add example test data to `testdata/`
 - [ ] Run tests and validate output
+- [ ] Run the document-nesting check on the generated JSON and confirm it matches the other
+      parsers for that schema
 - [ ] Register parser in `parser_factory.py`
 - [ ] Run `hatch run scripts:update-instrument-table` to regenerate the supported instruments table
 - [ ] Update `RELEASE_STATE` when stable
 
 ## Key Design Principles
 
-1. **Follow existing patterns** - Look at similar parsers for guidance
+1. **Follow existing patterns** - Look at similar parsers for guidance. For anything that
+   shapes the ASM output — above all the `MeasurementGroup` / `Measurement` nesting — the
+   parsers already using that schema mapper are the specification, not a suggestion.
 2. **Reuse utilities** - Use `read_excel`, `SeriesData`, `quantity_or_none`, etc.
 3. **Type safety** - Use proper quantity types for all measurements
 4. **Error handling** - Capture errors in Error objects, don't fail silently
@@ -250,6 +348,9 @@ The test framework (in `src/allotropy/testing/utils.py`) uses `mock_uuid_generat
 - All measurement values match the source file (spot-check particle sizes, counts, concentrations, etc.)
 - Metadata fields are populated correctly (sample name, operator, date/time, serial numbers)
 - The correct number of measurements/runs/groups appear (e.g., if the input has 4 runs, the output should have 4 measurement documents)
+- **Document nesting matches the other parsers for this schema** — run the check in
+  "Checking document nesting" against your output *and* against an existing parser's
+  expected JSON, and compare. `--overwrite` will happily write an inverted structure.
 - Calculated data (averages, etc.) is present if the source file includes it
 - No fields are unexpectedly null or missing
 
