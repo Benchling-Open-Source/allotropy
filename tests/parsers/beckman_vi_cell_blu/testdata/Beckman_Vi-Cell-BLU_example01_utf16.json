@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
         "data system document": {
             "ASM file identifier": "Beckman_Vi-Cell-BLU_example01_utf16.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_blu",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "Beckman_Vi-Cell-BLU_example01_utf16.csv",
             "software name": "Vi-Cell BLU",
             "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_example01_utf16.csv"
@@ -78,10 +78,6 @@
                                             "value": 18.51,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 18.72,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 2191,
                                             "unit": "cell"
@@ -100,6 +96,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 21.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 18.72,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -185,10 +185,6 @@
                                             "value": 19.24,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 19.48,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 7670,
                                             "unit": "cell"
@@ -207,6 +203,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 76.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 19.48,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -292,10 +292,6 @@
                                             "value": 17.22,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 17.34,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 1519,
                                             "unit": "cell"
@@ -314,6 +310,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 15.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 17.34,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -399,10 +399,6 @@
                                             "value": 19.85,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 20.03,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 3195,
                                             "unit": "cell"
@@ -421,6 +417,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 31.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 20.03,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -506,10 +506,6 @@
                                             "value": 17.95,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 18.27,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 2493,
                                             "unit": "cell"
@@ -528,6 +524,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 24.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 18.27,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -613,10 +613,6 @@
                                             "value": 18.85,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 19.1,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 2920,
                                             "unit": "cell"
@@ -635,6 +631,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 29.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 19.1,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -720,10 +720,6 @@
                                             "value": 19.29,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 19.42,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 7001,
                                             "unit": "cell"
@@ -742,6 +738,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 70.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 19.42,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -827,10 +827,6 @@
                                             "value": 19.5,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 19.62,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 5284,
                                             "unit": "cell"
@@ -849,6 +845,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 52.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 19.62,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -934,10 +934,6 @@
                                             "value": 17.46,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 18.17,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 11360,
                                             "unit": "cell"
@@ -956,6 +952,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 113.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 18.17,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -1041,10 +1041,6 @@
                                             "value": 17.52,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 18.67,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 9799,
                                             "unit": "cell"
@@ -1063,6 +1059,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 97.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 18.67,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]

@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
         "data system document": {
             "ASM file identifier": "Beckman_Vi-Cell-BLU_detail_export_multiple_samples.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_beckman_coulter_vi_cell_blu",
-            "ASM converter version": "0.1.149",
+            "ASM converter version": "0.1.151",
             "file name": "Beckman_Vi-Cell-BLU_detail_export_multiple_samples.csv",
             "software name": "Vi-Cell BLU",
             "UNC path": "tests/parsers/beckman_vi_cell_blu/testdata/Beckman_Vi-Cell-BLU_detail_export_multiple_samples.csv"
@@ -78,10 +78,6 @@
                                             "value": 15.72,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 15.82,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 11528,
                                             "unit": "cell"
@@ -100,6 +96,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 115.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 15.82,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -196,10 +196,6 @@
                                             "value": 14.33,
                                             "unit": "µm"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 14.55,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 9105,
                                             "unit": "cell"
@@ -218,6 +214,10 @@
                                         },
                                         "custom information document": {
                                             "Average cells per image": 91.0
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 14.55,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]

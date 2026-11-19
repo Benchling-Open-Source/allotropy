@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
         "data system document": {
             "ASM file identifier": "Cellaca_Example1.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_revvity_matrix",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "Cellaca_Example1.xlsx",
             "software name": "Revvity Matrix",
             "software version": "2",
@@ -54,10 +54,6 @@
                                             "value": 0.0291,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.13,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 15.91,
                                             "unit": "µm"
@@ -88,6 +84,10 @@
                                                 "value": 5.0,
                                                 "unit": "cell"
                                             }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.13,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -149,10 +149,6 @@
                                             "value": 0.029,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 12.41,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 11.52,
                                             "unit": "µm"
@@ -183,6 +179,10 @@
                                                 "value": 7.0,
                                                 "unit": "cell"
                                             }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 12.41,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]
@@ -244,10 +244,6 @@
                                             "value": 0.035,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.65,
-                                            "unit": "µm"
-                                        },
                                         "average dead cell diameter (cell counter)": {
                                             "value": 14.07,
                                             "unit": "µm"
@@ -278,6 +274,10 @@
                                                 "value": 12.0,
                                                 "unit": "cell"
                                             }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.65,
+                                            "unit": "µm"
                                         }
                                     }
                                 ]

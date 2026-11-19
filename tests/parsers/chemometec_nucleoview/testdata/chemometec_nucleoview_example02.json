@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
         "data system document": {
             "ASM file identifier": "chemometec_nucleoview_example02.json",
             "data system instance identifier": "ABC0-NBBS-FQ01",
             "ASM converter name": "allotropy_chemometec_nucleoview",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "chemometec_nucleoview_example02.csv",
             "software name": "NucleoView",
             "software version": "1.4.0.0",
@@ -85,7 +85,8 @@
                                         "experimental data identifier": "20231120-0039-c-cellsABCD.cm"
                                     }
                                 ]
-                            }
+                            },
+                            "experimental data identifier": "20231120-0039-c-cellsABCD.cm"
                         }
                     ],
                     "calculated data aggregate document": {

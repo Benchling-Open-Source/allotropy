@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2024/09/cell-counting.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/REC/2026/03/cell-counting.manifest",
     "cell counting aggregate document": {
         "data system document": {
             "ASM file identifier": "roche_cedex_hires_example_3.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_roche_cedex_hires",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "roche_cedex_hires_example_3.csv",
             "software name": "Cedex software",
             "UNC path": "tests/parsers/roche_cedex_hires/testdata/roche_cedex_hires_example_3.csv"
@@ -68,10 +68,6 @@
                                             "value": 0.0105925022,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 12.1762867,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 2800.0,
                                             "unit": "cell"
@@ -113,7 +109,12 @@
                                                 "value": 6.071428571,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 12.1762867,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -121,7 +122,6 @@
                                 "sample identifier": "Sample2",
                                 "batch identifier": "G037D0901CHO",
                                 "custom information document": {
-                                    "group identifier": "Original",
                                     "sample draw time": "2021-02-18T14:12:41+00:00"
                                 }
                             }
@@ -177,10 +177,6 @@
                                             "value": 0.9440104375,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.71258354,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 133.0,
                                             "unit": "cell"
@@ -222,7 +218,12 @@
                                                 "value": 13.53383446,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.71258354,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -230,7 +231,6 @@
                                 "sample identifier": "Camron_Tests",
                                 "batch identifier": "G037D0901CHO",
                                 "custom information document": {
-                                    "group identifier": "Original",
                                     "sample draw time": "2018-07-25T12:58:51+00:00"
                                 }
                             }
@@ -286,10 +286,6 @@
                                             "value": 3.77604175,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.75320816,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 117.0,
                                             "unit": "cell"
@@ -331,7 +327,12 @@
                                                 "value": 15.38461494,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.75320816,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original2"
                                     }
                                 ]
                             },
@@ -339,7 +340,6 @@
                                 "sample identifier": "KV020",
                                 "batch identifier": "G037D0901Molt4",
                                 "custom information document": {
-                                    "group identifier": "Original2",
                                     "sample draw time": "2018-02-27T08:44:43+00:00"
                                 }
                             }
@@ -395,10 +395,6 @@
                                             "value": 0.9440104375,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.73137665,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 125.0,
                                             "unit": "cell"
@@ -440,7 +436,12 @@
                                                 "value": 14.39999962,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.73137665,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -448,7 +449,6 @@
                                 "sample identifier": "KV013",
                                 "batch identifier": "G037D0901CHO",
                                 "custom information document": {
-                                    "group identifier": "Original",
                                     "sample draw time": "2018-02-27T13:27:18+00:00"
                                 }
                             }
@@ -504,10 +504,6 @@
                                             "value": 0.9440104375,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 14.01182365,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 37.0,
                                             "unit": "cell"
@@ -549,7 +545,12 @@
                                                 "value": 5.405405521,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 14.01182365,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -557,7 +558,6 @@
                                 "sample identifier": "KV017",
                                 "batch identifier": "G037D0901CHO",
                                 "custom information document": {
-                                    "group identifier": "Original",
                                     "sample draw time": "2018-05-30T08:43:57+00:00"
                                 }
                             }
@@ -613,10 +613,6 @@
                                             "value": 0.9440104375,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.63530922,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 40.0,
                                             "unit": "cell"
@@ -658,7 +654,12 @@
                                                 "value": 20.0,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.63530922,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -666,7 +667,6 @@
                                 "sample identifier": "KV016",
                                 "batch identifier": "G037D0901CHO",
                                 "custom information document": {
-                                    "group identifier": "Original",
                                     "sample draw time": "2018-05-23T13:01:19+00:00"
                                 }
                             }
@@ -722,10 +722,6 @@
                                             "value": 0.9440104375,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.63530922,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 40.0,
                                             "unit": "cell"
@@ -767,7 +763,12 @@
                                                 "value": 20.0,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.63530922,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -775,7 +776,6 @@
                                 "sample identifier": "KV014",
                                 "batch identifier": "G037D0901CHO",
                                 "custom information document": {
-                                    "group identifier": "Original",
                                     "sample draw time": "2018-02-27T13:27:18+00:00"
                                 }
                             }
@@ -831,10 +831,6 @@
                                             "value": 0.9440104375,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.61170387,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 136.0,
                                             "unit": "cell"
@@ -876,7 +872,12 @@
                                                 "value": 17.64705849,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.61170387,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -884,7 +885,6 @@
                                 "sample identifier": "KV012",
                                 "batch identifier": "G037D0901CHO",
                                 "custom information document": {
-                                    "group identifier": "Original",
                                     "sample draw time": "2018-02-27T08:53:42+00:00"
                                 }
                             }
@@ -940,10 +940,6 @@
                                             "value": 0.9440104375,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "average live cell diameter (cell counter)": {
-                                            "value": 13.75320816,
-                                            "unit": "µm"
-                                        },
                                         "total cell count": {
                                             "value": 117.0,
                                             "unit": "cell"
@@ -985,7 +981,12 @@
                                                 "value": 15.38461494,
                                                 "unit": "%"
                                             }
-                                        }
+                                        },
+                                        "average viable cell diameter (cell counter)": {
+                                            "value": 13.75320816,
+                                            "unit": "µm"
+                                        },
+                                        "group identifier": "Original"
                                     }
                                 ]
                             },
@@ -993,7 +994,6 @@
                                 "sample identifier": "KV020",
                                 "batch identifier": "G037D0901Molt4",
                                 "custom information document": {
-                                    "group identifier": "Original",
                                     "sample draw time": "2018-02-27T08:44:43+00:00"
                                 }
                             }
