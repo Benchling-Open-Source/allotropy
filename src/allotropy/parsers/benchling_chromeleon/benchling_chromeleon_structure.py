@@ -211,6 +211,8 @@ def _create_peak(peak: dict[str, Any], signal: dict[str, Any]) -> Peak:
             "number of calibration points": try_float_or_none(
                 peak.get("number of calibration points")
             ),
+            "peak type": peak.get("peak type"),
+            "calibration type": peak.get("calibration type"),
         },
     )
 

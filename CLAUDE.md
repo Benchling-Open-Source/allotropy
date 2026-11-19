@@ -140,13 +140,16 @@ Replace all of them, not just the obvious names. Preserve each value's *shape* (
 - Serial numbers, part numbers, asset tags, barcodes
 - Sample, compound, and method names
 - Absolute file paths — these usually embed a username and project name (e.g. `C:\CDSProjects\jdtest\Results\...`)
+- Network share paths and hostnames — a UNC path such as `\\company.net\shares\...` names the customer outright; use `example.net`
+- Email addresses and employee or LIMS IDs
 - GUIDs and internal record IDs
+- Office document properties in `.xlsx`/`.docx` files — `docProps/core.xml` (creator, last modified by) and `docProps/custom.xml` (`_AuthorEmail`, `_EmailSubject`, `MSIP_Label_*` sensitivity labels with the customer's tenant ID). Parsers never read these; blank or replace them
 
 **Some identifiers are load-bearing** — the parser matches on them, and renaming one side of a reference silently breaks the fixture. Examples: in `.rslt` bundles the ACAML `TraceID` GUIDs must equal the `.dx` member filenames, and signal names like `DAD1A,Sig=280,4 Ref=off` are parsed for detector wavelength and bandwidth. Rename such values across every reference at once, or leave them alone.
 
 Shape matters for behavior too: an instrument name of `Kaisla` and one of `Luxo HPLC` take different code paths, because `brand_name` reads the second whitespace token.
 
-Before committing, grep the fixture **and** the generated expected JSON for every customer string you know of.
+Before committing, grep the fixture **and** the generated expected JSON for every customer string you know of. `tests/testdata_anonymization_test.py` catches corporate UNC hosts, email addresses, and sensitivity labels automatically, but not names, so the manual check is still required.
 
 ### 2. Trim to a representative sample
 

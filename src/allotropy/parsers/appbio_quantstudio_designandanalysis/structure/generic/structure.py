@@ -121,7 +121,7 @@ class Header:
         return Header(
             measurement_time=header[
                 str,
-                ["Run End Date/Time", "Run End Data/Time"],
+                ["Run End Date/Time", "Run End Data/Time", "Experiment Run End Time"],
                 "Unable to find measurement time.",
             ],
             plate_well_count=assert_not_none(
@@ -142,9 +142,11 @@ class Header:
             measurement_method_identifier=header[str, "Quantification Cycle Method"],
             pcr_detection_chemistry=header.get(str, "Chemistry"),
             passive_reference_dye_setting=header.get(str, "Passive Reference"),
-            barcode=header.get(str, "Barcode"),
-            analyst=header.get(str, "Operator"),
-            experimental_data_identifier=PureWindowsPath(header[str, "File Name"]).name,
+            barcode=header.get(str, ["Barcode", "Experiment Barcode"]),
+            analyst=header.get(str, ["Operator", "User Name"]),
+            experimental_data_identifier=PureWindowsPath(
+                header[str, ["File Name", "Experiment File Name"]]
+            ).name,
             block_serial_number=header.get(str, "Block Serial Number"),
             heated_cover_serial_number=header.get(str, "Heated Cover Serial Number"),
             pcr_stage_number=pcr_stage_number,
@@ -541,15 +543,15 @@ class Result:
         return Result(
             cycle_threshold_value_setting=target_data[
                 float,
-                "Threshold",
+                ["Threshold", "Ct Threshold"],
                 f"Unable to find cycle threshold value setting for well {well_item_id}",
             ],
-            cycle_threshold_result=target_data.get(float, "Cq"),
+            cycle_threshold_result=target_data.get(float, ["Cq", "CT", "Ct"]),
             automatic_cycle_threshold_enabled_setting=target_data.get(
-                bool, "Auto Threshold", None
+                bool, ["Auto Threshold", "Automatic Ct Threshold"], None
             ),
             automatic_baseline_determination_enabled_setting=target_data.get(
-                bool, "Auto Baseline", None
+                bool, ["Auto Baseline", "Automatic Baseline"], None
             ),
             normalized_reporter_result=target_data.get(float, "Rn"),
             baseline_corrected_reporter_result=target_data.get(float, "Delta Rn"),
@@ -583,7 +585,7 @@ class Result:
             rn_mean=target_data.get(float, "Rn Mean"),
             rn_sd=target_data.get(float, "Rn SD"),
             y_intercept=target_data.get(float, "Y-Intercept"),
-            r_squared=target_data.get(float, "R2"),
+            r_squared=target_data.get(float, ["R2", "R(superscript 2)"]),
             slope=target_data.get(float, "Slope"),
             efficiency=target_data.get(float, "Efficiency"),
             amp_score=target_data.get(float, "Amp Score"),
