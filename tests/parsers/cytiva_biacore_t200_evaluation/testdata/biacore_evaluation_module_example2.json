@@ -11,7 +11,7 @@
             "software version": "3.0",
             "UNC path": "tests/parsers/cytiva_biacore_t200_evaluation/testdata/biacore_evaluation_module_example2.bme",
             "custom information document": {
-                "account identifier": "c172964",
+                "account identifier": "u100001",
                 "operating system type": "Win32NT",
                 "operating system version": "6.2.9200.0"
             }
@@ -141,7 +141,7 @@
                         "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
                     }
                 },
-                "analyst": "c172964"
+                "analyst": "u100001"
             },
             {
                 "measurement aggregate document": {
@@ -262,7 +262,7 @@
                         "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
                     }
                 },
-                "analyst": "c172964"
+                "analyst": "u100001"
             },
             {
                 "measurement aggregate document": {
@@ -383,7 +383,7 @@
                         "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
                     }
                 },
-                "analyst": "c172964"
+                "analyst": "u100001"
             },
             {
                 "measurement aggregate document": {
@@ -504,7 +504,7 @@
                         "experimental data identifier": "MASKED_EXPERIMENTAL_DATA_ID"
                     }
                 },
-                "analyst": "c172964"
+                "analyst": "u100001"
             }
         ]
     }

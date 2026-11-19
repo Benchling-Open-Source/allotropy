@@ -48,6 +48,11 @@ class SimplePrimaryAnalysisWellList(WellList):
             pos_to_id = {p: i for i, p in enumerate(pos.unique(), start=1)}
             results_data["Well"] = [pos_to_id[pos] for pos in pos]
 
+        # Some exports name these columns "Sample Name" and "Target Name".
+        for name in ("Sample", "Target"):
+            if name not in results_data and f"{name} Name" in results_data:
+                results_data = results_data.rename(columns={f"{name} Name": name})
+
         if "Target" not in results_data:
             results_data["Target"] = "N/A"
 
