@@ -5,7 +5,7 @@
             "ASM file identifier": "flowjo_example_2.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_flowjo",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/flowjo/testdata/flowjo_example_2.wsp",
             "file name": "LST_Depletion_check_14-Feb-2022(ellispsoid,%20curly%20quad,%20spider).wsp",
             "software name": "FlowJo",
@@ -1359,7 +1359,11 @@
                                                                                                                                                         "data region identifier": "ID1029297903",
                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_7",
                                                                                                                                                         "custom information document": {
-                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                            "parent population by name": "CD3+",
+                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q1: Comp-PE-A- , Comp-BV786-A+",
+                                                                                                                                                            "gating depth": "6",
+                                                                                                                                                            "phenotype": "PE- BV786+"
                                                                                                                                                         }
                                                                                                                                                     },
                                                                                                                                                     {
@@ -1372,7 +1376,11 @@
                                                                                                                                                         "data region identifier": "ID753466671",
                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_7",
                                                                                                                                                         "custom information document": {
-                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                            "parent population by name": "CD3+",
+                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q2: Comp-PE-A+ , Comp-BV786-A+",
+                                                                                                                                                            "gating depth": "6",
+                                                                                                                                                            "phenotype": "PE+ BV786+"
                                                                                                                                                         }
                                                                                                                                                     },
                                                                                                                                                     {
@@ -1385,7 +1393,11 @@
                                                                                                                                                         "data region identifier": "ID622803157",
                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_7",
                                                                                                                                                         "custom information document": {
-                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                            "parent population by name": "CD3+",
+                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q3: Comp-PE-A+ , Comp-BV786-A-",
+                                                                                                                                                            "gating depth": "6",
+                                                                                                                                                            "phenotype": "PE+ BV786-"
                                                                                                                                                         }
                                                                                                                                                     },
                                                                                                                                                     {
@@ -1410,7 +1422,11 @@
                                                                                                                                                                         "data region identifier": "ID1630875370",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                            "parent population by name": "Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)",
+                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/CD8, CD4 subset",
+                                                                                                                                                                            "gating depth": "7",
+                                                                                                                                                                            "phenotype": "CD8, CD4 subset"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1435,7 +1451,11 @@
                                                                                                                                                                                         "data region identifier": "ID1385334932",
                                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_13",
                                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                                            "parent population by name": "CD8, CD4 subset (Curly Gate)",
+                                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/CD8, CD4 subset (Curly Gate)/Q1: CD8- , CD4+",
+                                                                                                                                                                                            "gating depth": "8",
+                                                                                                                                                                                            "phenotype": "Q1: CD8- , CD4+"
                                                                                                                                                                                         }
                                                                                                                                                                                     },
                                                                                                                                                                                     {
@@ -1448,7 +1468,11 @@
                                                                                                                                                                                         "data region identifier": "ID1039510638",
                                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_13",
                                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                                            "parent population by name": "CD8, CD4 subset (Curly Gate)",
+                                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/CD8, CD4 subset (Curly Gate)/Q2: CD8+ , CD4+",
+                                                                                                                                                                                            "gating depth": "8",
+                                                                                                                                                                                            "phenotype": "Q2: CD8+ , CD4+"
                                                                                                                                                                                         }
                                                                                                                                                                                     },
                                                                                                                                                                                     {
@@ -1461,7 +1485,11 @@
                                                                                                                                                                                         "data region identifier": "ID724572069",
                                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_13",
                                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                                            "parent population by name": "CD8, CD4 subset (Curly Gate)",
+                                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/CD8, CD4 subset (Curly Gate)/Q3: CD8+ , CD4-",
+                                                                                                                                                                                            "gating depth": "8",
+                                                                                                                                                                                            "phenotype": "Q3: CD8+ , CD4-"
                                                                                                                                                                                         }
                                                                                                                                                                                     },
                                                                                                                                                                                     {
@@ -1474,14 +1502,22 @@
                                                                                                                                                                                         "data region identifier": "ID246829924",
                                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_13",
                                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                                            "parent population by name": "CD8, CD4 subset (Curly Gate)",
+                                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/CD8, CD4 subset (Curly Gate)/Q4: CD8- , CD4-",
+                                                                                                                                                                                            "gating depth": "8",
+                                                                                                                                                                                            "phenotype": "Q4: CD8- , CD4-"
                                                                                                                                                                                         }
                                                                                                                                                                                     }
                                                                                                                                                                                 ]
                                                                                                                                                                             }
                                                                                                                                                                         ],
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                            "parent population by name": "Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)",
+                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/CD8, CD4 subset (Curly Gate)",
+                                                                                                                                                                            "gating depth": "7",
+                                                                                                                                                                            "phenotype": "CD8, CD4 subset (Curly Gate)"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1494,7 +1530,11 @@
                                                                                                                                                                         "data region identifier": "ID2118391290",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                            "parent population by name": "Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)",
+                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/Q1: CD8- , CD4+",
+                                                                                                                                                                            "gating depth": "7",
+                                                                                                                                                                            "phenotype": "Q1: CD8- , CD4+"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1507,7 +1547,11 @@
                                                                                                                                                                         "data region identifier": "ID714384950",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                            "parent population by name": "Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)",
+                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/Q2: CD8+ , CD4+",
+                                                                                                                                                                            "gating depth": "7",
+                                                                                                                                                                            "phenotype": "Q2: CD8+ , CD4+"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1520,7 +1564,11 @@
                                                                                                                                                                         "data region identifier": "ID1278107227",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                            "parent population by name": "Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)",
+                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/Q3: CD8+ , CD4-",
+                                                                                                                                                                            "gating depth": "7",
+                                                                                                                                                                            "phenotype": "Q3: CD8+ , CD4-"
                                                                                                                                                                         }
                                                                                                                                                                     },
                                                                                                                                                                     {
@@ -1533,54 +1581,87 @@
                                                                                                                                                                         "data region identifier": "ID1722477981",
                                                                                                                                                                         "parent population identifier": "FLOWJO_TEST_ID_11",
                                                                                                                                                                         "custom information document": {
-                                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                                            "parent population by name": "Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)",
+                                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)/Q4: CD8- , CD4-",
+                                                                                                                                                                            "gating depth": "7",
+                                                                                                                                                                            "phenotype": "Q4: CD8- , CD4-"
                                                                                                                                                                         }
                                                                                                                                                                     }
                                                                                                                                                                 ]
                                                                                                                                                             }
                                                                                                                                                         ],
                                                                                                                                                         "custom information document": {
-                                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                                            "parent population by name": "CD3+",
+                                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+/Q4: Comp-PE-A- , Comp-BV786-A- (ellipsoid, spider)",
+                                                                                                                                                            "gating depth": "6",
+                                                                                                                                                            "phenotype": "PE- BV786-"
                                                                                                                                                         }
                                                                                                                                                     }
                                                                                                                                                 ]
                                                                                                                                             }
                                                                                                                                         ],
                                                                                                                                         "custom information document": {
-                                                                                                                                            "group identifier": "All Samples"
+                                                                                                                                            "group identifier": "All Samples",
+                                                                                                                                            "parent population by name": "Live cells",
+                                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells/CD3+",
+                                                                                                                                            "gating depth": "5",
+                                                                                                                                            "phenotype": "CD3+"
                                                                                                                                         }
                                                                                                                                     }
                                                                                                                                 ]
                                                                                                                             }
                                                                                                                         ],
                                                                                                                         "custom information document": {
-                                                                                                                            "group identifier": "All Samples"
+                                                                                                                            "group identifier": "All Samples",
+                                                                                                                            "parent population by name": "Single Cells",
+                                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells/Live cells",
+                                                                                                                            "gating depth": "4",
+                                                                                                                            "phenotype": "Live cells"
                                                                                                                         }
                                                                                                                     }
                                                                                                                 ]
                                                                                                             }
                                                                                                         ],
                                                                                                         "custom information document": {
-                                                                                                            "group identifier": "All Samples"
+                                                                                                            "group identifier": "All Samples",
+                                                                                                            "parent population by name": "Single Cells",
+                                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells/Single Cells",
+                                                                                                            "gating depth": "3",
+                                                                                                            "phenotype": "Single Cells"
                                                                                                         }
                                                                                                     }
                                                                                                 ]
                                                                                             }
                                                                                         ],
                                                                                         "custom information document": {
-                                                                                            "group identifier": "All Samples"
+                                                                                            "group identifier": "All Samples",
+                                                                                            "parent population by name": "Lymphocytes",
+                                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes/Single Cells",
+                                                                                            "gating depth": "2",
+                                                                                            "phenotype": "Single Cells"
                                                                                         }
                                                                                     }
                                                                                 ]
                                                                             }
                                                                         ],
                                                                         "custom information document": {
-                                                                            "group identifier": "All Samples"
+                                                                            "group identifier": "All Samples",
+                                                                            "parent population by name": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs",
+                                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs/Lymphocytes",
+                                                                            "gating depth": "1",
+                                                                            "phenotype": "Lymphocytes"
                                                                         }
                                                                     }
                                                                 ]
                                                             }
-                                                        ]
+                                                        ],
+                                                        "custom information document": {
+                                                            "gating path": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs",
+                                                            "gating depth": "0",
+                                                            "phenotype": "Spleenocytes_Tcells_Vaccinated_Saline_004.fcs"
+                                                        }
                                                     }
                                                 ]
                                             }
