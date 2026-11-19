@@ -53,6 +53,38 @@ def _filter_unread_data(unread_data: dict[str, str | None]) -> dict[str, str | N
     }
 
 
+def _extract_phenotype(gate_name: str | None) -> str | None:
+    """
+    Extract phenotype from gate name.
+
+    Examples:
+        "Q1: Comp-PE-A- , Comp-BV786-A+" -> "PE- BV786+"
+        "Q2: Comp-PE-A+ , Comp-BV786-A+" -> "PE+ BV786+"
+        "CD3+" -> "CD3+"
+        "Live cells" -> "Live cells"
+
+    Args:
+        gate_name: The gate name to extract phenotype from
+
+    Returns:
+        The extracted phenotype, or the original gate name if no pattern matches
+    """
+    if not gate_name:
+        return None
+
+    # Pattern for quadrant gates like "Q1: Comp-PE-A- , Comp-BV786-A+"
+    # Match: Q#: [Comp-]MARKER-A SIGN , [Comp-]MARKER-A SIGN
+    quadrant_pattern = r"Q\d+:\s*(?:Comp-)?([^-,\s]+)-[A-Z]\s*([+-])\s*,\s*(?:Comp-)?([^-,\s]+)-[A-Z]\s*([+-])"
+    match = re.match(quadrant_pattern, gate_name)
+
+    if match:
+        marker1, sign1, marker2, sign2 = match.groups()
+        return f"{marker1}{sign1} {marker2}{sign2}"
+
+    # If no pattern matches, return the original name
+    return gate_name
+
+
 def _process_keywords(
     keywords: StrictXmlElement | None,
 ) -> tuple[str | None, dict[str, str]]:
@@ -727,7 +759,11 @@ def _extract_statistics(population: StrictXmlElement) -> list[Statistic] | None:
 
 
 def _create_populations(
-    node: StrictXmlElement, parent_id: str | None = None
+    node: StrictXmlElement,
+    parent_id: str | None = None,
+    parent_name: str | None = None,
+    parent_path: str | None = None,
+    parent_depth: int = 0,
 ) -> list[Population]:
     populations = []
 
@@ -743,11 +779,28 @@ def _create_populations(
             gate.get_namespaced_attr_or_none("gating", "parent_id")
             gate_unread = gate.get_unread()
 
+        # Calculate gating path and depth
+        current_depth = parent_depth + 1
+        current_path = (
+            f"{parent_path}/{written_name}"
+            if parent_path and written_name
+            else written_name
+        )
+
+        # Extract phenotype from gate name
+        phenotype = _extract_phenotype(written_name)
+
         statistics = None
         subpops_element = population.find_or_none("Subpopulations")
         if subpops_element is not None:
             statistics = _extract_statistics(subpops_element)
-            sub_populations = _create_populations(subpops_element, current_id)
+            sub_populations = _create_populations(
+                subpops_element,
+                current_id,
+                written_name,
+                current_path,
+                current_depth,
+            )
         else:
             sub_populations = []
 
@@ -788,9 +841,13 @@ def _create_populations(
         pop = Population(
             population_identifier=current_id,
             parent_population_identifier=parent_id,
+            parent_population_by_name=parent_name,
             written_name=written_name,
             data_region_identifier=data_region_identifier,
             count=int(count) if count else None,
+            gating_path=current_path,
+            gating_depth=current_depth,
+            phenotype=phenotype,
             sub_populations=sub_populations,
             custom_info=final_custom_info,
             statistics=statistics,
@@ -807,9 +864,16 @@ def _process_sample(sample: StrictXmlElement) -> list[Population]:
 
     subpops_element = sample_node.find_or_none("Subpopulations")
     root_id = random_uuid_str()
+    root_name = sample_node.get_attr_or_none("name")
     sub_populations = []
     if subpops_element is not None:
-        sub_populations = _create_populations(subpops_element, root_id)
+        sub_populations = _create_populations(
+            subpops_element,
+            parent_id=root_id,
+            parent_name=root_name,
+            parent_path=root_name,
+            parent_depth=0,
+        )
         # Mark subpops_element as fully processed
         subpops_element.mark_all_as_read()
 
@@ -819,9 +883,13 @@ def _process_sample(sample: StrictXmlElement) -> list[Population]:
     root_population = Population(
         population_identifier=root_id,
         parent_population_identifier=None,
-        written_name=sample_node.get_attr_or_none("name"),
+        parent_population_by_name=None,
+        written_name=root_name,
         data_region_identifier=None,
         count=int(count_str) if count_str else None,
+        gating_path=root_name,
+        gating_depth=0,
+        phenotype=root_name,
         sub_populations=sub_populations,
         statistics=None,
     )
