@@ -351,3 +351,24 @@ def test_create_measurement_groups() -> None:
 
     assert measurement.data_regions is not None
     assert len(measurement.data_regions) > 0
+
+
+def test_create_measurement_groups_uses_each_tube_date() -> None:
+    first_tube_start = SAMPLE_XML.index("<tube ")
+    first_tube_end = SAMPLE_XML.index("</tube>") + len("</tube>")
+    second_tube = (
+        SAMPLE_XML[first_tube_start:first_tube_end]
+        .replace('name="TestTube1"', 'name="TestTube2"')
+        .replace("<date>2023-01-01T12:15:00</date>", "<date>2023-01-01T12:45:00</date>")
+    )
+    xml = SAMPLE_XML[:first_tube_end] + second_tube + SAMPLE_XML[first_tube_end:]
+    root_element = StrictXmlElement(
+        ET.parse(BytesIO(xml.encode())).getroot()  # noqa: S314
+    )
+
+    measurement_groups = create_measurement_groups(root_element)
+
+    assert [group.measurement_time for group in measurement_groups] == [
+        "2023-01-01T12:15:00",
+        "2023-01-01T12:45:00",
+    ]

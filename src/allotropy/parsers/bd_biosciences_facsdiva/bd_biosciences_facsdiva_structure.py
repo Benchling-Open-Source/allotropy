@@ -643,7 +643,6 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
         msg = "No experiment found in the XML file."
         raise AllotropeParsingError(msg)
 
-    measurement_time = experiment.recursive_find_or_none(["specimen", "tube", "date"])
     experiment_identifier = experiment.get_attr_or_none("name")
     analyst = experiment.recursive_find_or_none(["owner_name"])
     export_time = experiment.find_or_none("export_time")
@@ -654,6 +653,7 @@ def create_measurement_groups(root_element: StrictXmlElement) -> list[Measuremen
         tubes = specimen.findall("tube")
         for tube in tubes:
             experimental_data_identifier = tube.find_or_none("data_filename")
+            measurement_time = tube.find_or_none("date")
             measurements, measurement_aggregate_custom_info = _process_tube(
                 tube,
                 specimen_name,
