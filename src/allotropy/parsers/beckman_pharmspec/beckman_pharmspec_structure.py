@@ -148,9 +148,22 @@ def create_metadata(header: Header, file_path: str) -> Metadata:
     )
 
 
+def _pop_unless_placeholder(custom_info: dict[str, Any], key: str) -> Any:
+    if custom_info.get(key) == "-":
+        return None
+    return custom_info.pop(key, None)
+
+
 def create_measurement_groups(
     header: Header, distributions: list[Distribution]
 ) -> list[MeasurementGroup]:
+    # These header values apply to every run, so read them out of the header custom
+    # information once, before building the measurement for each run.
+    model_number = header.custom_info.pop("Sensor Model", None)
+    batch_identifier = _pop_unless_placeholder(header.custom_info, "Batch-Nr")
+    ro_nr = _pop_unless_placeholder(header.custom_info, "Ro-Nr")
+    observation_1 = _pop_unless_placeholder(header.custom_info, "Bemerkungen 1")
+    observation_2 = _pop_unless_placeholder(header.custom_info, "Bemerkungen 2")
     return [
         MeasurementGroup(
             analyst=header.analyst,
@@ -174,14 +187,10 @@ def create_measurement_groups(
                         and is_negative_zero(feature.__dict__[key])
                     ],
                     device_control_custom_info={
-                        "model number": header.custom_info.pop("Sensor Model", None),
+                        "model number": model_number,
                     },
                     sample_custom_info={
-                        "batch identifier": (
-                            header.custom_info.pop("Batch-Nr", None)
-                            if header.custom_info.get("Batch-Nr", None) != "-"
-                            else None
-                        ),
+                        "batch identifier": batch_identifier,
                         "container identifier": (
                             header.container_identifier
                             if header.container_identifier != "-"
@@ -189,21 +198,9 @@ def create_measurement_groups(
                         ),
                     },
                     custom_info={
-                        "Ro-Nr": (
-                            header.custom_info.pop("Ro-Nr", None)
-                            if header.custom_info.get("Ro-Nr", None) != "-"
-                            else None
-                        ),
-                        "observation 1": (
-                            header.custom_info.pop("Bemerkungen 1", None)
-                            if header.custom_info.get("Bemerkungen 1", None) != "-"
-                            else None
-                        ),
-                        "observation 2": (
-                            header.custom_info.pop("Bemerkungen 2", None)
-                            if header.custom_info.get("Bemerkungen 2", None) != "-"
-                            else None
-                        ),
+                        "Ro-Nr": ro_nr,
+                        "observation 1": observation_1,
+                        "observation 2": observation_2,
                     },
                 )
                 for distribution in [x for x in distributions if not x.is_calculated]
