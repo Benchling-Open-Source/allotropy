@@ -3081,7 +3081,7 @@
             "ASM file identifier": "010307_114129_BNCH654563_stdcurve_singleplate01.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/010307_114129_BNCH654563_stdcurve_singleplate01.txt",
             "file name": "010307_114129_BNCH654563_stdcurve_singleplate01.txt",
             "software name": "Gen5",
@@ -3160,6 +3160,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3170,6 +3173,7 @@
                                 "sample identifier": "STD1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 2000.0
                                 }
                             },
@@ -3206,6 +3210,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3216,6 +3223,7 @@
                                 "sample identifier": "STD1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 2000.0
                                 }
                             },
@@ -3252,6 +3260,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3262,6 +3273,7 @@
                                 "sample identifier": "SPL1:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -3298,6 +3310,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3308,6 +3323,7 @@
                                 "sample identifier": "SPL1:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -3344,6 +3360,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3354,6 +3373,7 @@
                                 "sample identifier": "SPL1:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -3390,6 +3410,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3400,6 +3423,7 @@
                                 "sample identifier": "SPL2:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -3436,6 +3460,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3446,6 +3473,7 @@
                                 "sample identifier": "SPL2:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -3482,6 +3510,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3492,6 +3523,7 @@
                                 "sample identifier": "SPL2:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -3528,6 +3560,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3538,6 +3573,7 @@
                                 "sample identifier": "SPL3:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -3574,6 +3610,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3584,6 +3623,7 @@
                                 "sample identifier": "SPL3:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -3620,6 +3660,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3630,6 +3673,7 @@
                                 "sample identifier": "SPL3:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -3666,6 +3710,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3676,6 +3723,7 @@
                                 "sample identifier": "STD2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 666.67
                                 }
                             },
@@ -3712,6 +3760,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3722,6 +3773,7 @@
                                 "sample identifier": "STD2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 666.67
                                 }
                             },
@@ -3758,6 +3810,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3768,6 +3823,7 @@
                                 "sample identifier": "STD2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 666.67
                                 }
                             },
@@ -3804,6 +3860,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3814,6 +3873,7 @@
                                 "sample identifier": "SPL1:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -3850,6 +3910,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3860,6 +3923,7 @@
                                 "sample identifier": "SPL1:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -3896,6 +3960,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3906,6 +3973,7 @@
                                 "sample identifier": "SPL1:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -3942,6 +4010,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3952,6 +4023,7 @@
                                 "sample identifier": "SPL2:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -3988,6 +4060,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -3998,6 +4073,7 @@
                                 "sample identifier": "SPL2:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -4034,6 +4110,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4044,6 +4123,7 @@
                                 "sample identifier": "SPL2:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -4080,6 +4160,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4090,6 +4173,7 @@
                                 "sample identifier": "SPL3:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -4126,6 +4210,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4136,6 +4223,7 @@
                                 "sample identifier": "SPL3:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -4172,6 +4260,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4182,6 +4273,7 @@
                                 "sample identifier": "SPL3:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -4218,6 +4310,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4228,6 +4323,7 @@
                                 "sample identifier": "STD3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 222.22
                                 }
                             },
@@ -4264,6 +4360,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4274,6 +4373,7 @@
                                 "sample identifier": "STD3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 222.22
                                 }
                             },
@@ -4310,6 +4410,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4320,6 +4423,7 @@
                                 "sample identifier": "STD3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 222.22
                                 }
                             },
@@ -4356,6 +4460,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4366,6 +4473,7 @@
                                 "sample identifier": "SPL1:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -4402,6 +4510,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4412,6 +4523,7 @@
                                 "sample identifier": "SPL1:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -4448,6 +4560,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4458,6 +4573,7 @@
                                 "sample identifier": "SPL1:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -4494,6 +4610,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4504,6 +4623,7 @@
                                 "sample identifier": "SPL2:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -4540,6 +4660,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4550,6 +4673,7 @@
                                 "sample identifier": "SPL2:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -4586,6 +4710,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4596,6 +4723,7 @@
                                 "sample identifier": "SPL2:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -4632,6 +4760,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4642,6 +4773,7 @@
                                 "sample identifier": "SPL3:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -4678,6 +4810,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4688,6 +4823,7 @@
                                 "sample identifier": "SPL3:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -4724,6 +4860,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4734,6 +4873,7 @@
                                 "sample identifier": "SPL3:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -4770,6 +4910,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4780,6 +4923,7 @@
                                 "sample identifier": "STD4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 74.074
                                 }
                             },
@@ -4816,6 +4960,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4826,6 +4973,7 @@
                                 "sample identifier": "STD4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 74.074
                                 }
                             },
@@ -4862,6 +5010,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4872,6 +5023,7 @@
                                 "sample identifier": "STD4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 74.074
                                 }
                             },
@@ -4908,6 +5060,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4918,6 +5073,7 @@
                                 "sample identifier": "SPL1:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -4954,6 +5110,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -4964,6 +5123,7 @@
                                 "sample identifier": "SPL1:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -5000,6 +5160,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5010,6 +5173,7 @@
                                 "sample identifier": "SPL1:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -5046,6 +5210,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5056,6 +5223,7 @@
                                 "sample identifier": "SPL2:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -5092,6 +5260,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5102,6 +5273,7 @@
                                 "sample identifier": "SPL2:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -5138,6 +5310,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5148,6 +5323,7 @@
                                 "sample identifier": "SPL2:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -5184,6 +5360,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5194,6 +5373,7 @@
                                 "sample identifier": "SPL3:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -5230,6 +5410,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5240,6 +5423,7 @@
                                 "sample identifier": "SPL3:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -5276,6 +5460,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5286,6 +5473,7 @@
                                 "sample identifier": "SPL3:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -5322,6 +5510,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5332,6 +5523,7 @@
                                 "sample identifier": "STD5",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 24.691
                                 }
                             },
@@ -5368,6 +5560,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5378,6 +5573,7 @@
                                 "sample identifier": "STD5",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 24.691
                                 }
                             },
@@ -5414,6 +5610,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5424,6 +5623,7 @@
                                 "sample identifier": "STD5",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 24.691
                                 }
                             },
@@ -5460,6 +5660,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5470,6 +5673,7 @@
                                 "sample identifier": "SPL4:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -5506,6 +5710,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5516,6 +5723,7 @@
                                 "sample identifier": "SPL4:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -5552,6 +5760,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5562,6 +5773,7 @@
                                 "sample identifier": "SPL4:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -5598,6 +5810,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5608,6 +5823,7 @@
                                 "sample identifier": "SPL5:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -5644,6 +5860,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5654,6 +5873,7 @@
                                 "sample identifier": "SPL5:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -5690,6 +5910,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5700,6 +5923,7 @@
                                 "sample identifier": "SPL5:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -5736,6 +5960,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5746,6 +5973,7 @@
                                 "sample identifier": "SPL6:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -5782,6 +6010,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5792,6 +6023,7 @@
                                 "sample identifier": "SPL6:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -5828,6 +6060,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5838,6 +6073,7 @@
                                 "sample identifier": "SPL6:1",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 1.0
                                 }
                             },
@@ -5874,6 +6110,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5884,6 +6123,7 @@
                                 "sample identifier": "STD6",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 8.2305
                                 }
                             },
@@ -5920,6 +6160,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5930,6 +6173,7 @@
                                 "sample identifier": "STD6",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 8.2305
                                 }
                             },
@@ -5966,6 +6210,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -5976,6 +6223,7 @@
                                 "sample identifier": "STD6",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 8.2305
                                 }
                             },
@@ -6012,6 +6260,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6022,6 +6273,7 @@
                                 "sample identifier": "SPL4:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -6058,6 +6310,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6068,6 +6323,7 @@
                                 "sample identifier": "SPL4:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -6104,6 +6360,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6114,6 +6373,7 @@
                                 "sample identifier": "SPL4:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -6150,6 +6410,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6160,6 +6423,7 @@
                                 "sample identifier": "SPL5:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -6196,6 +6460,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6206,6 +6473,7 @@
                                 "sample identifier": "SPL5:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -6242,6 +6510,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6252,6 +6523,7 @@
                                 "sample identifier": "SPL5:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -6288,6 +6560,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6298,6 +6573,7 @@
                                 "sample identifier": "SPL6:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -6334,6 +6610,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6344,6 +6623,7 @@
                                 "sample identifier": "SPL6:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -6380,6 +6660,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6390,6 +6673,7 @@
                                 "sample identifier": "SPL6:2",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.5
                                 }
                             },
@@ -6426,6 +6710,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6436,6 +6723,7 @@
                                 "sample identifier": "STD7",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 2.7435
                                 }
                             },
@@ -6472,6 +6760,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6482,6 +6773,7 @@
                                 "sample identifier": "STD7",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 2.7435
                                 }
                             },
@@ -6518,6 +6810,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6528,6 +6823,7 @@
                                 "sample identifier": "STD7",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 2.7435
                                 }
                             },
@@ -6564,6 +6860,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6574,6 +6873,7 @@
                                 "sample identifier": "SPL4:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -6610,6 +6910,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6620,6 +6923,7 @@
                                 "sample identifier": "SPL4:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -6656,6 +6960,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6666,6 +6973,7 @@
                                 "sample identifier": "SPL4:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -6702,6 +7010,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6712,6 +7023,7 @@
                                 "sample identifier": "SPL5:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -6748,6 +7060,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6758,6 +7073,7 @@
                                 "sample identifier": "SPL5:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -6794,6 +7110,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6804,6 +7123,7 @@
                                 "sample identifier": "SPL5:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -6840,6 +7160,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6850,6 +7173,7 @@
                                 "sample identifier": "SPL6:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -6886,6 +7210,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6896,6 +7223,7 @@
                                 "sample identifier": "SPL6:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -6932,6 +7260,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6942,6 +7273,7 @@
                                 "sample identifier": "SPL6:3",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.25
                                 }
                             },
@@ -6978,6 +7310,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -6986,7 +7321,10 @@
                             "sample document": {
                                 "location identifier": "H1",
                                 "sample identifier": "BLK",
-                                "well plate identifier": "BNCH654563"
+                                "well plate identifier": "BNCH654563",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\2022_10_10_mockBCA_defaultExport.prt",
                             "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\2022_10_10_mockBCA_defaultExport_singlePlate.xpt",
@@ -7021,6 +7359,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7029,7 +7370,10 @@
                             "sample document": {
                                 "location identifier": "H2",
                                 "sample identifier": "BLK",
-                                "well plate identifier": "BNCH654563"
+                                "well plate identifier": "BNCH654563",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\2022_10_10_mockBCA_defaultExport.prt",
                             "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\2022_10_10_mockBCA_defaultExport_singlePlate.xpt",
@@ -7064,6 +7408,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7072,7 +7419,10 @@
                             "sample document": {
                                 "location identifier": "H3",
                                 "sample identifier": "BLK",
-                                "well plate identifier": "BNCH654563"
+                                "well plate identifier": "BNCH654563",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\2022_10_10_mockBCA_defaultExport.prt",
                             "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\2022_10_10_mockBCA_defaultExport_singlePlate.xpt",
@@ -7107,6 +7457,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7117,6 +7470,7 @@
                                 "sample identifier": "SPL4:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -7153,6 +7507,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7163,6 +7520,7 @@
                                 "sample identifier": "SPL4:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -7199,6 +7557,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7209,6 +7570,7 @@
                                 "sample identifier": "SPL4:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -7245,6 +7607,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7255,6 +7620,7 @@
                                 "sample identifier": "SPL5:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -7291,6 +7657,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7301,6 +7670,7 @@
                                 "sample identifier": "SPL5:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -7337,6 +7707,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7347,6 +7720,7 @@
                                 "sample identifier": "SPL5:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -7383,6 +7757,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7393,6 +7770,7 @@
                                 "sample identifier": "SPL6:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -7429,6 +7807,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7439,6 +7820,7 @@
                                 "sample identifier": "SPL6:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },
@@ -7475,6 +7857,9 @@
                                         "detector wavelength setting": {
                                             "value": 630.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
                                         }
                                     }
                                 ]
@@ -7485,6 +7870,7 @@
                                 "sample identifier": "SPL6:4",
                                 "well plate identifier": "BNCH654563",
                                 "custom information document": {
+                                    "Plate Number": "Plate 1",
                                     "Conc/Dil": 0.125
                                 }
                             },

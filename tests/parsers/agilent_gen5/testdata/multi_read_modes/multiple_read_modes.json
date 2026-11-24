@@ -5,7 +5,7 @@
             "ASM file identifier": "multiple_read_modes.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/agilent_gen5/testdata/multi_read_modes/multiple_read_modes.txt",
             "file name": "multiple_read_modes.txt",
             "software name": "Gen5",
@@ -82,6 +82,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -127,6 +130,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -174,6 +180,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -219,6 +228,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -264,6 +276,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -311,6 +326,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -356,6 +374,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -401,6 +422,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -448,6 +472,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -493,6 +520,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -538,6 +568,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -585,6 +618,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -630,6 +666,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -675,6 +714,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -722,6 +764,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -767,6 +812,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -812,6 +860,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -859,6 +910,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -904,6 +958,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -949,6 +1006,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -996,6 +1056,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1041,6 +1104,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1086,6 +1152,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1133,6 +1202,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1178,6 +1250,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1223,6 +1298,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1270,6 +1348,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1315,6 +1396,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1360,6 +1444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1407,6 +1494,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1452,6 +1542,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1497,6 +1590,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1544,6 +1640,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1589,6 +1688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1634,6 +1736,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1681,6 +1786,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1726,6 +1834,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1771,6 +1882,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1818,6 +1932,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1863,6 +1980,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1908,6 +2028,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -1955,6 +2078,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2000,6 +2126,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2045,6 +2174,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2092,6 +2224,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2137,6 +2272,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2182,6 +2320,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2229,6 +2370,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2274,6 +2418,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2319,6 +2466,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2366,6 +2516,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2411,6 +2564,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2456,6 +2612,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2503,6 +2662,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2548,6 +2710,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2593,6 +2758,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2640,6 +2808,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2685,6 +2856,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2730,6 +2904,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2777,6 +2954,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2822,6 +3002,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2867,6 +3050,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2914,6 +3100,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -2959,6 +3148,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3004,6 +3196,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3051,6 +3246,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3096,6 +3294,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3141,6 +3342,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3188,6 +3392,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3233,6 +3440,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3278,6 +3488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3325,6 +3538,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3370,6 +3586,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3415,6 +3634,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3462,6 +3684,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3507,6 +3732,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3552,6 +3780,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3599,6 +3830,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3644,6 +3878,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3689,6 +3926,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3736,6 +3976,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3781,6 +4024,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3826,6 +4072,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3873,6 +4122,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3918,6 +4170,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -3963,6 +4218,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4010,6 +4268,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4055,6 +4316,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4100,6 +4364,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4147,6 +4414,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4192,6 +4462,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4237,6 +4510,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4284,6 +4560,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4329,6 +4608,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4374,6 +4656,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4421,6 +4706,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4466,6 +4754,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4511,6 +4802,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4558,6 +4852,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4603,6 +4900,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4648,6 +4948,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4695,6 +4998,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4740,6 +5046,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4785,6 +5094,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4832,6 +5144,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4877,6 +5192,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4922,6 +5240,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -4969,6 +5290,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5014,6 +5338,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5059,6 +5386,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5106,6 +5436,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5151,6 +5484,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5196,6 +5532,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5243,6 +5582,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5288,6 +5630,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5333,6 +5678,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5380,6 +5728,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5425,6 +5776,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5470,6 +5824,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5517,6 +5874,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5562,6 +5922,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5607,6 +5970,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5654,6 +6020,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5699,6 +6068,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5744,6 +6116,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5791,6 +6166,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5836,6 +6214,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5881,6 +6262,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5928,6 +6312,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -5973,6 +6360,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6018,6 +6408,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6065,6 +6458,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6110,6 +6506,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6155,6 +6554,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6202,6 +6604,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6247,6 +6652,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6292,6 +6700,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6339,6 +6750,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6384,6 +6798,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6429,6 +6846,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6476,6 +6896,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6521,6 +6944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6566,6 +6992,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6613,6 +7042,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6658,6 +7090,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6703,6 +7138,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6750,6 +7188,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6795,6 +7236,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6840,6 +7284,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6887,6 +7334,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6932,6 +7382,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -6977,6 +7430,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7024,6 +7480,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7069,6 +7528,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7114,6 +7576,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7161,6 +7626,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7206,6 +7674,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7251,6 +7722,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7298,6 +7772,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7343,6 +7820,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7388,6 +7868,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7435,6 +7918,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7480,6 +7966,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7525,6 +8014,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7572,6 +8064,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7617,6 +8112,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7662,6 +8160,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7709,6 +8210,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7754,6 +8258,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7799,6 +8306,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7846,6 +8356,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7891,6 +8404,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7936,6 +8452,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -7983,6 +8502,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8028,6 +8550,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8073,6 +8598,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8120,6 +8648,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8165,6 +8696,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8210,6 +8744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8257,6 +8794,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8302,6 +8842,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8347,6 +8890,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8394,6 +8940,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8439,6 +8988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8484,6 +9036,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8531,6 +9086,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8576,6 +9134,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8621,6 +9182,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8668,6 +9232,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8713,6 +9280,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8758,6 +9328,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8805,6 +9378,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8850,6 +9426,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8895,6 +9474,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8942,6 +9524,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -8987,6 +9572,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9032,6 +9620,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9079,6 +9670,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9124,6 +9718,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9169,6 +9766,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9216,6 +9816,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9261,6 +9864,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9306,6 +9912,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9353,6 +9962,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9398,6 +10010,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9443,6 +10058,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9490,6 +10108,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9535,6 +10156,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9580,6 +10204,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9627,6 +10254,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9672,6 +10302,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9717,6 +10350,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9764,6 +10400,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9809,6 +10448,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9854,6 +10496,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9901,6 +10546,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9946,6 +10594,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -9991,6 +10642,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10038,6 +10692,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10083,6 +10740,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10128,6 +10788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10175,6 +10838,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10220,6 +10886,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10265,6 +10934,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10312,6 +10984,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10357,6 +11032,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10402,6 +11080,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10449,6 +11130,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10494,6 +11178,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10539,6 +11226,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10586,6 +11276,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10631,6 +11324,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10676,6 +11372,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10723,6 +11422,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10768,6 +11470,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10813,6 +11518,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10860,6 +11568,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10905,6 +11616,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10950,6 +11664,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -10997,6 +11714,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11042,6 +11762,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11087,6 +11810,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11134,6 +11860,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11179,6 +11908,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11224,6 +11956,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11271,6 +12006,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11316,6 +12054,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11361,6 +12102,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11408,6 +12152,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11453,6 +12200,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11498,6 +12248,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11545,6 +12298,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11590,6 +12346,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11635,6 +12394,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11682,6 +12444,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11727,6 +12492,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11772,6 +12540,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11819,6 +12590,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11864,6 +12638,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11909,6 +12686,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -11956,6 +12736,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12001,6 +12784,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12046,6 +12832,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12093,6 +12882,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12138,6 +12930,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12183,6 +12978,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12230,6 +13028,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12275,6 +13076,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12320,6 +13124,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12367,6 +13174,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12412,6 +13222,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12457,6 +13270,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12504,6 +13320,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12549,6 +13368,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12594,6 +13416,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12641,6 +13466,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12686,6 +13514,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12731,6 +13562,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12778,6 +13612,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12823,6 +13660,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12868,6 +13708,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12915,6 +13758,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -12960,6 +13806,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -13005,6 +13854,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -13052,6 +13904,9 @@
                                         "detector wavelength setting": {
                                             "value": 600.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -13097,6 +13952,9 @@
                                         "excitation wavelength setting": {
                                             "value": 579.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]
@@ -13142,6 +14000,9 @@
                                         "excitation wavelength setting": {
                                             "value": 479.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Reader"
                                         }
                                     }
                                 ]

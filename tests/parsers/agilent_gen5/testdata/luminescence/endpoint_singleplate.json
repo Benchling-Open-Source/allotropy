@@ -1545,7 +1545,7 @@
             "ASM file identifier": "endpoint_singleplate.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/agilent_gen5/testdata/luminescence/endpoint_singleplate.txt",
             "file name": "endpoint_singleplate.txt",
             "software name": "Gen5",
@@ -1616,7 +1616,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -1657,7 +1660,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -1698,7 +1704,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -1739,7 +1748,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -1780,7 +1792,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -1821,7 +1836,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -1862,7 +1880,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -1903,7 +1924,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -1944,7 +1968,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -1985,7 +2012,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2026,7 +2056,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2067,7 +2100,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2108,7 +2144,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2149,7 +2188,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2190,7 +2232,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2231,7 +2276,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2272,7 +2320,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2313,7 +2364,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2354,7 +2408,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2395,7 +2452,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2436,7 +2496,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2477,7 +2540,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2518,7 +2584,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2559,7 +2628,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2600,7 +2672,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2641,7 +2716,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2682,7 +2760,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2723,7 +2804,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2764,7 +2848,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2805,7 +2892,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2846,7 +2936,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2887,7 +2980,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2928,7 +3024,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -2969,7 +3068,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3010,7 +3112,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3051,7 +3156,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3092,7 +3200,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3133,7 +3244,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3174,7 +3288,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3215,7 +3332,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3256,7 +3376,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3297,7 +3420,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3338,7 +3464,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3379,7 +3508,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3420,7 +3552,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3461,7 +3596,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3502,7 +3640,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3543,7 +3684,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3584,7 +3728,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3625,7 +3772,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3666,7 +3816,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3707,7 +3860,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3748,7 +3904,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3789,7 +3948,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3830,7 +3992,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3871,7 +4036,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3912,7 +4080,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3953,7 +4124,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -3994,7 +4168,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4035,7 +4212,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4076,7 +4256,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4117,7 +4300,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4158,7 +4344,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4199,7 +4388,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4240,7 +4432,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4281,7 +4476,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4322,7 +4520,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4363,7 +4564,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4404,7 +4608,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4445,7 +4652,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4486,7 +4696,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4527,7 +4740,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4568,7 +4784,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4609,7 +4828,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4650,7 +4872,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4691,7 +4916,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4732,7 +4960,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4773,7 +5004,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4814,7 +5048,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4855,7 +5092,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4896,7 +5136,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4937,7 +5180,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -4978,7 +5224,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5019,7 +5268,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5060,7 +5312,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5101,7 +5356,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5142,7 +5400,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5183,7 +5444,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5224,7 +5488,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5265,7 +5532,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5306,7 +5576,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5347,7 +5620,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5388,7 +5664,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5429,7 +5708,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },
@@ -5470,7 +5752,10 @@
                                             "unit": "mm"
                                         },
                                         "detector gain setting": "135",
-                                        "scan position setting (plate reader)": "top scan position (plate reader)"
+                                        "scan position setting (plate reader)": "top scan position (plate reader)",
+                                        "custom information document": {
+                                            "Reading Type": "Manual"
+                                        }
                                     }
                                 ]
                             },

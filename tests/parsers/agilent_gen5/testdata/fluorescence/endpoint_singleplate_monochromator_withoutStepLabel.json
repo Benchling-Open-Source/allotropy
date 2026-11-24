@@ -5,7 +5,7 @@
             "ASM file identifier": "endpoint_singleplate_monochromator_withoutStepLabel.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_singleplate_monochromator_withoutStepLabel.txt",
             "file name": "endpoint_singleplate_monochromator_withoutStepLabel.txt",
             "software name": "Gen5",
@@ -88,6 +88,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -141,6 +144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -182,6 +188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -235,6 +244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -276,6 +288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -329,6 +344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -370,6 +388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -423,6 +444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -464,6 +488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -517,6 +544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -558,6 +588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -611,6 +644,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -652,6 +688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -705,6 +744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -746,6 +788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -799,6 +844,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -840,6 +888,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -893,6 +944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -934,6 +988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -987,6 +1044,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1028,6 +1088,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1081,6 +1144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1122,6 +1188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1175,6 +1244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1216,6 +1288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1269,6 +1344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1310,6 +1388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1363,6 +1444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1404,6 +1488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1457,6 +1544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1498,6 +1588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1551,6 +1644,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1592,6 +1688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1645,6 +1744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1686,6 +1788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1739,6 +1844,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1780,6 +1888,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1833,6 +1944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1874,6 +1988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1927,6 +2044,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1968,6 +2088,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2021,6 +2144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2062,6 +2188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2115,6 +2244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2156,6 +2288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2209,6 +2344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2250,6 +2388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2303,6 +2444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2344,6 +2488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2397,6 +2544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2438,6 +2588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2491,6 +2644,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2532,6 +2688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2585,6 +2744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2626,6 +2788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2679,6 +2844,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2720,6 +2888,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2773,6 +2944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2814,6 +2988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2867,6 +3044,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2908,6 +3088,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2961,6 +3144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3002,6 +3188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3055,6 +3244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3096,6 +3288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3149,6 +3344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3190,6 +3388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3243,6 +3444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3284,6 +3488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3337,6 +3544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3378,6 +3588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3431,6 +3644,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3472,6 +3688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3525,6 +3744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3566,6 +3788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3619,6 +3844,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3660,6 +3888,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3713,6 +3944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3754,6 +3988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3807,6 +4044,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3848,6 +4088,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3901,6 +4144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3942,6 +4188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3995,6 +4244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4036,6 +4288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4089,6 +4344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4130,6 +4388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4183,6 +4444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4224,6 +4488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4277,6 +4544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4318,6 +4588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4371,6 +4644,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4412,6 +4688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4465,6 +4744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4506,6 +4788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4559,6 +4844,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4600,6 +4888,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4653,6 +4944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4694,6 +4988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4747,6 +5044,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4788,6 +5088,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4841,6 +5144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4882,6 +5188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4935,6 +5244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4976,6 +5288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5029,6 +5344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5070,6 +5388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5123,6 +5444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5164,6 +5488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5217,6 +5544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5258,6 +5588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5311,6 +5644,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5352,6 +5688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5405,6 +5744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5446,6 +5788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5499,6 +5844,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5540,6 +5888,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5593,6 +5944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5634,6 +5988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5687,6 +6044,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5728,6 +6088,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5781,6 +6144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5822,6 +6188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5875,6 +6244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5916,6 +6288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -5969,6 +6344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6010,6 +6388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6063,6 +6444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6104,6 +6488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6157,6 +6544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6198,6 +6588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6251,6 +6644,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6292,6 +6688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6345,6 +6744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6386,6 +6788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6439,6 +6844,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6480,6 +6888,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6533,6 +6944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6574,6 +6988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6627,6 +7044,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6668,6 +7088,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6721,6 +7144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6762,6 +7188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6815,6 +7244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6856,6 +7288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6909,6 +7344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -6950,6 +7388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7003,6 +7444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7044,6 +7488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7097,6 +7544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7138,6 +7588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7191,6 +7644,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7232,6 +7688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7285,6 +7744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7326,6 +7788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7379,6 +7844,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7420,6 +7888,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7473,6 +7944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7514,6 +7988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7567,6 +8044,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7608,6 +8088,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7661,6 +8144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7702,6 +8188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7755,6 +8244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7796,6 +8288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7849,6 +8344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7890,6 +8388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7943,6 +8444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -7984,6 +8488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8037,6 +8544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8078,6 +8588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8131,6 +8644,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8172,6 +8688,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8225,6 +8744,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8266,6 +8788,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8319,6 +8844,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8360,6 +8888,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8413,6 +8944,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8454,6 +8988,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8507,6 +9044,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8548,6 +9088,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8601,6 +9144,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8642,6 +9188,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8695,6 +9244,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8736,6 +9288,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8789,6 +9344,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8830,6 +9388,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8883,6 +9444,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8924,6 +9488,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -8977,6 +9544,9 @@
                                         "excitation wavelength setting": {
                                             "value": 485.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -9018,6 +9588,9 @@
                                         "excitation wavelength setting": {
                                             "value": 610.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]

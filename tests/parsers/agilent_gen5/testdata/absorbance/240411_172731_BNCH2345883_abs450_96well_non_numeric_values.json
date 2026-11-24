@@ -5,7 +5,7 @@
             "ASM file identifier": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.json",
             "data system instance identifier": "N/A",
             "ASM converter name": "allotropy_agilent_gen5",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.152",
             "UNC path": "tests/parsers/agilent_gen5/testdata/absorbance/240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
             "file name": "240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt",
             "software name": "Gen5",
@@ -82,6 +82,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -90,7 +93,10 @@
                             "sample document": {
                                 "location identifier": "A2",
                                 "sample identifier": "BNCH2345883 A2",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -124,6 +130,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -132,7 +141,10 @@
                             "sample document": {
                                 "location identifier": "A3",
                                 "sample identifier": "BNCH2345883 A3",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -166,6 +178,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -174,7 +189,10 @@
                             "sample document": {
                                 "location identifier": "A4",
                                 "sample identifier": "BNCH2345883 A4",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -208,6 +226,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -216,7 +237,10 @@
                             "sample document": {
                                 "location identifier": "A5",
                                 "sample identifier": "BNCH2345883 A5",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -250,6 +274,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -258,7 +285,10 @@
                             "sample document": {
                                 "location identifier": "A6",
                                 "sample identifier": "BNCH2345883 A6",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -292,6 +322,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -300,7 +333,10 @@
                             "sample document": {
                                 "location identifier": "A7",
                                 "sample identifier": "BNCH2345883 A7",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -334,6 +370,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -342,7 +381,10 @@
                             "sample document": {
                                 "location identifier": "A8",
                                 "sample identifier": "BNCH2345883 A8",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -384,6 +426,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -392,7 +437,10 @@
                             "sample document": {
                                 "location identifier": "A9",
                                 "sample identifier": "BNCH2345883 A9",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -426,6 +474,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -434,7 +485,10 @@
                             "sample document": {
                                 "location identifier": "A10",
                                 "sample identifier": "BNCH2345883 A10",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -468,6 +522,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -476,7 +533,10 @@
                             "sample document": {
                                 "location identifier": "A11",
                                 "sample identifier": "BNCH2345883 A11",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -510,6 +570,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -518,7 +581,10 @@
                             "sample document": {
                                 "location identifier": "A12",
                                 "sample identifier": "BNCH2345883 A12",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -552,6 +618,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -560,7 +629,10 @@
                             "sample document": {
                                 "location identifier": "B1",
                                 "sample identifier": "BNCH2345883 B1",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -594,6 +666,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -602,7 +677,10 @@
                             "sample document": {
                                 "location identifier": "B2",
                                 "sample identifier": "BNCH2345883 B2",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -636,6 +714,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -644,7 +725,10 @@
                             "sample document": {
                                 "location identifier": "B3",
                                 "sample identifier": "BNCH2345883 B3",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -678,6 +762,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -686,7 +773,10 @@
                             "sample document": {
                                 "location identifier": "B4",
                                 "sample identifier": "BNCH2345883 B4",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -720,6 +810,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -728,7 +821,10 @@
                             "sample document": {
                                 "location identifier": "B5",
                                 "sample identifier": "BNCH2345883 B5",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -762,6 +858,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -770,7 +869,10 @@
                             "sample document": {
                                 "location identifier": "B6",
                                 "sample identifier": "BNCH2345883 B6",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -804,6 +906,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -812,7 +917,10 @@
                             "sample document": {
                                 "location identifier": "B7",
                                 "sample identifier": "BNCH2345883 B7",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -854,6 +962,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -862,7 +973,10 @@
                             "sample document": {
                                 "location identifier": "B8",
                                 "sample identifier": "BNCH2345883 B8",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -896,6 +1010,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -904,7 +1021,10 @@
                             "sample document": {
                                 "location identifier": "B9",
                                 "sample identifier": "BNCH2345883 B9",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -938,6 +1058,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -946,7 +1069,10 @@
                             "sample document": {
                                 "location identifier": "B10",
                                 "sample identifier": "BNCH2345883 B10",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -980,6 +1106,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -988,7 +1117,10 @@
                             "sample document": {
                                 "location identifier": "B11",
                                 "sample identifier": "BNCH2345883 B11",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1022,6 +1154,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1030,7 +1165,10 @@
                             "sample document": {
                                 "location identifier": "B12",
                                 "sample identifier": "BNCH2345883 B12",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1064,6 +1202,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1072,7 +1213,10 @@
                             "sample document": {
                                 "location identifier": "C1",
                                 "sample identifier": "BNCH2345883 C1",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1106,6 +1250,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1114,7 +1261,10 @@
                             "sample document": {
                                 "location identifier": "C2",
                                 "sample identifier": "BNCH2345883 C2",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1148,6 +1298,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1156,7 +1309,10 @@
                             "sample document": {
                                 "location identifier": "C3",
                                 "sample identifier": "BNCH2345883 C3",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1190,6 +1346,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1198,7 +1357,10 @@
                             "sample document": {
                                 "location identifier": "C4",
                                 "sample identifier": "BNCH2345883 C4",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1232,6 +1394,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1240,7 +1405,10 @@
                             "sample document": {
                                 "location identifier": "C5",
                                 "sample identifier": "BNCH2345883 C5",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1274,6 +1442,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1282,7 +1453,10 @@
                             "sample document": {
                                 "location identifier": "C6",
                                 "sample identifier": "BNCH2345883 C6",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -1324,6 +1498,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1332,7 +1509,10 @@
                             "sample document": {
                                 "location identifier": "C7",
                                 "sample identifier": "BNCH2345883 C7",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1366,6 +1546,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1374,7 +1557,10 @@
                             "sample document": {
                                 "location identifier": "C8",
                                 "sample identifier": "BNCH2345883 C8",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1408,6 +1594,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1416,7 +1605,10 @@
                             "sample document": {
                                 "location identifier": "C9",
                                 "sample identifier": "BNCH2345883 C9",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1450,6 +1642,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1458,7 +1653,10 @@
                             "sample document": {
                                 "location identifier": "C10",
                                 "sample identifier": "BNCH2345883 C10",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1492,6 +1690,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1500,7 +1701,10 @@
                             "sample document": {
                                 "location identifier": "C11",
                                 "sample identifier": "BNCH2345883 C11",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1534,6 +1738,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1542,7 +1749,10 @@
                             "sample document": {
                                 "location identifier": "C12",
                                 "sample identifier": "BNCH2345883 C12",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1576,6 +1786,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1584,7 +1797,10 @@
                             "sample document": {
                                 "location identifier": "D1",
                                 "sample identifier": "BNCH2345883 D1",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1618,6 +1834,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1626,7 +1845,10 @@
                             "sample document": {
                                 "location identifier": "D2",
                                 "sample identifier": "BNCH2345883 D2",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1660,6 +1882,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1668,7 +1893,10 @@
                             "sample document": {
                                 "location identifier": "D3",
                                 "sample identifier": "BNCH2345883 D3",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1702,6 +1930,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1710,7 +1941,10 @@
                             "sample document": {
                                 "location identifier": "D4",
                                 "sample identifier": "BNCH2345883 D4",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1744,6 +1978,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1752,7 +1989,10 @@
                             "sample document": {
                                 "location identifier": "D5",
                                 "sample identifier": "BNCH2345883 D5",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -1794,6 +2034,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1802,7 +2045,10 @@
                             "sample document": {
                                 "location identifier": "D6",
                                 "sample identifier": "BNCH2345883 D6",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1836,6 +2082,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1844,7 +2093,10 @@
                             "sample document": {
                                 "location identifier": "D7",
                                 "sample identifier": "BNCH2345883 D7",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1878,6 +2130,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1886,7 +2141,10 @@
                             "sample document": {
                                 "location identifier": "D8",
                                 "sample identifier": "BNCH2345883 D8",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1920,6 +2178,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1928,7 +2189,10 @@
                             "sample document": {
                                 "location identifier": "D9",
                                 "sample identifier": "BNCH2345883 D9",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -1962,6 +2226,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -1970,7 +2237,10 @@
                             "sample document": {
                                 "location identifier": "D10",
                                 "sample identifier": "BNCH2345883 D10",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2004,6 +2274,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2012,7 +2285,10 @@
                             "sample document": {
                                 "location identifier": "D11",
                                 "sample identifier": "BNCH2345883 D11",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2046,6 +2322,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2054,7 +2333,10 @@
                             "sample document": {
                                 "location identifier": "D12",
                                 "sample identifier": "BNCH2345883 D12",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -2096,6 +2378,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2104,7 +2389,10 @@
                             "sample document": {
                                 "location identifier": "E1",
                                 "sample identifier": "BNCH2345883 E1",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2138,6 +2426,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2146,7 +2437,10 @@
                             "sample document": {
                                 "location identifier": "E2",
                                 "sample identifier": "BNCH2345883 E2",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2180,6 +2474,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2188,7 +2485,10 @@
                             "sample document": {
                                 "location identifier": "E3",
                                 "sample identifier": "BNCH2345883 E3",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2222,6 +2522,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2230,7 +2533,10 @@
                             "sample document": {
                                 "location identifier": "E4",
                                 "sample identifier": "BNCH2345883 E4",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -2272,6 +2578,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2280,7 +2589,10 @@
                             "sample document": {
                                 "location identifier": "E5",
                                 "sample identifier": "BNCH2345883 E5",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2314,6 +2626,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2322,7 +2637,10 @@
                             "sample document": {
                                 "location identifier": "E6",
                                 "sample identifier": "BNCH2345883 E6",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2356,6 +2674,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2364,7 +2685,10 @@
                             "sample document": {
                                 "location identifier": "E7",
                                 "sample identifier": "BNCH2345883 E7",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2398,6 +2722,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2406,7 +2733,10 @@
                             "sample document": {
                                 "location identifier": "E8",
                                 "sample identifier": "BNCH2345883 E8",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2440,6 +2770,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2448,7 +2781,10 @@
                             "sample document": {
                                 "location identifier": "E9",
                                 "sample identifier": "BNCH2345883 E9",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2482,6 +2818,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2490,7 +2829,10 @@
                             "sample document": {
                                 "location identifier": "E10",
                                 "sample identifier": "BNCH2345883 E10",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2524,6 +2866,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2532,7 +2877,10 @@
                             "sample document": {
                                 "location identifier": "E11",
                                 "sample identifier": "BNCH2345883 E11",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -2574,6 +2922,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2582,7 +2933,10 @@
                             "sample document": {
                                 "location identifier": "E12",
                                 "sample identifier": "BNCH2345883 E12",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2616,6 +2970,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2624,7 +2981,10 @@
                             "sample document": {
                                 "location identifier": "F1",
                                 "sample identifier": "BNCH2345883 F1",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2658,6 +3018,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2666,7 +3029,10 @@
                             "sample document": {
                                 "location identifier": "F2",
                                 "sample identifier": "BNCH2345883 F2",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2700,6 +3066,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2708,7 +3077,10 @@
                             "sample document": {
                                 "location identifier": "F3",
                                 "sample identifier": "BNCH2345883 F3",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -2750,6 +3122,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2758,7 +3133,10 @@
                             "sample document": {
                                 "location identifier": "F4",
                                 "sample identifier": "BNCH2345883 F4",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2792,6 +3170,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2800,7 +3181,10 @@
                             "sample document": {
                                 "location identifier": "F5",
                                 "sample identifier": "BNCH2345883 F5",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2834,6 +3218,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2842,7 +3229,10 @@
                             "sample document": {
                                 "location identifier": "F6",
                                 "sample identifier": "BNCH2345883 F6",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2876,6 +3266,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2884,7 +3277,10 @@
                             "sample document": {
                                 "location identifier": "F7",
                                 "sample identifier": "BNCH2345883 F7",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2918,6 +3314,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2926,7 +3325,10 @@
                             "sample document": {
                                 "location identifier": "F8",
                                 "sample identifier": "BNCH2345883 F8",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -2960,6 +3362,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -2968,7 +3373,10 @@
                             "sample document": {
                                 "location identifier": "F9",
                                 "sample identifier": "BNCH2345883 F9",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3002,6 +3410,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3010,7 +3421,10 @@
                             "sample document": {
                                 "location identifier": "F10",
                                 "sample identifier": "BNCH2345883 F10",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -3052,6 +3466,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3060,7 +3477,10 @@
                             "sample document": {
                                 "location identifier": "F11",
                                 "sample identifier": "BNCH2345883 F11",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3094,6 +3514,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3102,7 +3525,10 @@
                             "sample document": {
                                 "location identifier": "F12",
                                 "sample identifier": "BNCH2345883 F12",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3136,6 +3562,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3144,7 +3573,10 @@
                             "sample document": {
                                 "location identifier": "G1",
                                 "sample identifier": "BNCH2345883 G1",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3178,6 +3610,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3186,7 +3621,10 @@
                             "sample document": {
                                 "location identifier": "G2",
                                 "sample identifier": "BNCH2345883 G2",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -3228,6 +3666,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3236,7 +3677,10 @@
                             "sample document": {
                                 "location identifier": "G3",
                                 "sample identifier": "BNCH2345883 G3",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3270,6 +3714,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3278,7 +3725,10 @@
                             "sample document": {
                                 "location identifier": "G4",
                                 "sample identifier": "BNCH2345883 G4",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3312,6 +3762,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3320,7 +3773,10 @@
                             "sample document": {
                                 "location identifier": "G5",
                                 "sample identifier": "BNCH2345883 G5",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3354,6 +3810,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3362,7 +3821,10 @@
                             "sample document": {
                                 "location identifier": "G6",
                                 "sample identifier": "BNCH2345883 G6",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3396,6 +3858,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3404,7 +3869,10 @@
                             "sample document": {
                                 "location identifier": "G7",
                                 "sample identifier": "BNCH2345883 G7",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3438,6 +3906,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3446,7 +3917,10 @@
                             "sample document": {
                                 "location identifier": "G8",
                                 "sample identifier": "BNCH2345883 G8",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3480,6 +3954,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3488,7 +3965,10 @@
                             "sample document": {
                                 "location identifier": "G9",
                                 "sample identifier": "BNCH2345883 G9",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -3530,6 +4010,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3538,7 +4021,10 @@
                             "sample document": {
                                 "location identifier": "G10",
                                 "sample identifier": "BNCH2345883 G10",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3572,6 +4058,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3580,7 +4069,10 @@
                             "sample document": {
                                 "location identifier": "G11",
                                 "sample identifier": "BNCH2345883 G11",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3614,6 +4106,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3622,7 +4117,10 @@
                             "sample document": {
                                 "location identifier": "G12",
                                 "sample identifier": "BNCH2345883 G12",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3656,6 +4154,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3664,7 +4165,10 @@
                             "sample document": {
                                 "location identifier": "H1",
                                 "sample identifier": "BNCH2345883 H1",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -3706,6 +4210,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3714,7 +4221,10 @@
                             "sample document": {
                                 "location identifier": "H2",
                                 "sample identifier": "BNCH2345883 H2",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3748,6 +4258,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3756,7 +4269,10 @@
                             "sample document": {
                                 "location identifier": "H3",
                                 "sample identifier": "BNCH2345883 H3",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3790,6 +4306,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3798,7 +4317,10 @@
                             "sample document": {
                                 "location identifier": "H4",
                                 "sample identifier": "BNCH2345883 H4",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3832,6 +4354,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3840,7 +4365,10 @@
                             "sample document": {
                                 "location identifier": "H5",
                                 "sample identifier": "BNCH2345883 H5",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3874,6 +4402,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3882,7 +4413,10 @@
                             "sample document": {
                                 "location identifier": "H6",
                                 "sample identifier": "BNCH2345883 H6",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3916,6 +4450,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3924,7 +4461,10 @@
                             "sample document": {
                                 "location identifier": "H7",
                                 "sample identifier": "BNCH2345883 H7",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -3958,6 +4498,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -3966,7 +4509,10 @@
                             "sample document": {
                                 "location identifier": "H8",
                                 "sample identifier": "BNCH2345883 H8",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "error aggregate document": {
@@ -4008,6 +4554,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4016,7 +4565,10 @@
                             "sample document": {
                                 "location identifier": "H9",
                                 "sample identifier": "BNCH2345883 H9",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -4050,6 +4602,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4058,7 +4613,10 @@
                             "sample document": {
                                 "location identifier": "H10",
                                 "sample identifier": "BNCH2345883 H10",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -4092,6 +4650,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4100,7 +4661,10 @@
                             "sample document": {
                                 "location identifier": "H11",
                                 "sample identifier": "BNCH2345883 H11",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {
@@ -4134,6 +4698,9 @@
                                         "detector wavelength setting": {
                                             "value": 450.0,
                                             "unit": "nm"
+                                        },
+                                        "custom information document": {
+                                            "Reading Type": "Simulation"
                                         }
                                     }
                                 ]
@@ -4142,7 +4709,10 @@
                             "sample document": {
                                 "location identifier": "H12",
                                 "sample identifier": "BNCH2345883 H12",
-                                "well plate identifier": "BNCH2345883"
+                                "well plate identifier": "BNCH2345883",
+                                "custom information document": {
+                                    "Plate Number": "Plate 1"
+                                }
                             },
                             "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\20240411_abs450_96well.prt",
                             "absorbance": {

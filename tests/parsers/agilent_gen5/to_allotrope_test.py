@@ -75,3 +75,35 @@ def test_to_allotrope_no_measurements_error() -> None:
         from_file(
             f"{TESTDATA}/calculated_data_with_no_measurements_error.txt", VENDOR_TYPE
         )
+
+
+def test_to_allotrope_header_custom_info_on_every_measurement() -> None:
+    # Reading Type and Plate Number come from the file header, so every measurement
+    # in the plate should report them, not only the first one.
+    test_filepath = (
+        f"{ABSORBANCE_PATH}/010307_114129_BNCH654563_stdcurve_singleplate01.txt"
+    )
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+
+    plate_documents = allotrope_dict["plate reader aggregate document"][
+        "plate reader document"
+    ]
+    measurements = [
+        measurement
+        for plate_document in plate_documents
+        for measurement in plate_document["measurement aggregate document"][
+            "measurement document"
+        ]
+    ]
+    assert len(measurements) == 96
+    for measurement in measurements:
+        device_control = measurement["device control aggregate document"][
+            "device control document"
+        ][0]
+        sample_custom_info = measurement["sample document"][
+            "custom information document"
+        ]
+        assert device_control["custom information document"] == {
+            "Reading Type": "Manual"
+        }
+        assert sample_custom_info["Plate Number"] == "Plate 1"

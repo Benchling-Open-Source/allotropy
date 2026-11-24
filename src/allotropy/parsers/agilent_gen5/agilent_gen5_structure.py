@@ -1483,6 +1483,12 @@ def _create_measurement(
     elif read_data.read_mode == ReadMode.LUMINESCENCE and kinetic_data:
         measurement_type = MeasurementType.LUMINESCENCE_CUBE_DETECTOR
 
+    # The header data is shared by every measurement in the file, so copy it before
+    # moving keys out of it, or only the first measurement would report them.
+    additional_data = dict(header_data.additional_data)
+    reading_type = additional_data.pop("Reading Type", None)
+    plate_number = additional_data.pop("Plate Number", None)
+
     if measurement_type in [
         MeasurementType.ULTRAVIOLET_ABSORBANCE,
         MeasurementType.ULTRAVIOLET_ABSORBANCE_CUBE_DETECTOR,
@@ -1573,16 +1579,16 @@ def _create_measurement(
         ),
         error_document=error_documents,
         device_control_custom_info={
-            "Reading Type": header_data.additional_data.pop("Reading Type", None),
+            "Reading Type": reading_type,
             "Direction of emitted light": (
                 filter_data.light_direction if filter_data else None
             ),
         },
         sample_custom_info={
-            "Plate Number": header_data.additional_data.pop("Plate Number", None),
+            "Plate Number": plate_number,
             "Conc/Dil": concentration_value,
         },
-        measurement_custom_info=header_data.additional_data,
+        measurement_custom_info=additional_data,
         analytical_method_identifier=header_data.protocol_file_path
         if header_data.protocol_file_path
         else None,
