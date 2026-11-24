@@ -58,6 +58,8 @@ NON_UNIQUE_IDENTIFIERS = {
     "destination location identifier",
     "measurement method identifier",
     "sample identifier",
+    "sample identifier 2",
+    "sample identifier 3",
     "sensor chip identifier",
     "well location identifier",
     "source well location identifier",
