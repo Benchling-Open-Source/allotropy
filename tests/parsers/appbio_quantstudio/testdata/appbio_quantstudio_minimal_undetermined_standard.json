@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
         "calculated data aggregate document": {
             "calculated data document": [
@@ -466,7 +466,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
@@ -609,7 +610,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",
@@ -746,7 +748,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNaseP"
+                            "target DNA description": "RNaseP",
+                            "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example"
                         }
                     ],
                     "experimental data identifier": "QuantStudio96-Well Relative Standard Curve Example",

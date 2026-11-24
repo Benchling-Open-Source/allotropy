@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
         "calculated data aggregate document": {
             "calculated data document": [
@@ -265,7 +265,7 @@
             "ASM file identifier": "appbio_quantstudio_example10.json",
             "data system instance identifier": "localhost",
             "ASM converter name": "allotropy_appbio_quantstudio_rt_pcr",
-            "ASM converter version": "0.1.143",
+            "ASM converter version": "0.1.151",
             "file name": "appbio_quantstudio_example10.xlsx",
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
@@ -421,7 +421,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GeneA"
+                            "target DNA description": "GeneA",
+                            "experimental data identifier": "test_experiment"
                         }
                     ],
                     "experimental data identifier": "test_experiment",
@@ -584,7 +585,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GeneA"
+                            "target DNA description": "GeneA",
+                            "experimental data identifier": "test_experiment"
                         }
                     ],
                     "experimental data identifier": "test_experiment",
@@ -742,7 +744,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GeneA"
+                            "target DNA description": "GeneA",
+                            "experimental data identifier": "test_experiment"
                         }
                     ],
                     "experimental data identifier": "test_experiment",
@@ -900,7 +903,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "GeneA"
+                            "target DNA description": "GeneA",
+                            "experimental data identifier": "test_experiment"
                         }
                     ],
                     "experimental data identifier": "test_experiment",
@@ -1058,7 +1062,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RefGene"
+                            "target DNA description": "RefGene",
+                            "experimental data identifier": "test_experiment"
                         }
                     ],
                     "experimental data identifier": "test_experiment",
@@ -1216,7 +1221,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RefGene"
+                            "target DNA description": "RefGene",
+                            "experimental data identifier": "test_experiment"
                         }
                     ],
                     "experimental data identifier": "test_experiment",
@@ -1373,7 +1379,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RefGene"
+                            "target DNA description": "RefGene",
+                            "experimental data identifier": "test_experiment"
                         }
                     ],
                     "experimental data identifier": "test_experiment",
@@ -1531,7 +1538,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RefGene"
+                            "target DNA description": "RefGene",
+                            "experimental data identifier": "test_experiment"
                         }
                     ],
                     "experimental data identifier": "test_experiment",

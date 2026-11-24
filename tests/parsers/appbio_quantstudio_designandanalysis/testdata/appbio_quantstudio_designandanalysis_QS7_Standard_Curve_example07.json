@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
         "data system document": {
             "ASM file identifier": "appbio_quantstudio_designandanalysis_QS7_Standard_Curve_example07.json",
             "data system instance identifier": "localhost",
             "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
-            "ASM converter version": "0.1.149",
+            "ASM converter version": "0.1.152",
             "file name": "appbio_quantstudio_designandanalysis_QS7_Standard_Curve_example07.xlsx",
             "UNC path": "tests/parsers/appbio_quantstudio_designandanalysis/testdata/appbio_quantstudio_designandanalysis_QS7_Standard_Curve_example07.xlsx"
         },
@@ -81,7 +81,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -162,7 +163,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -243,7 +245,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -324,7 +327,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -403,7 +407,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -481,7 +486,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -562,7 +568,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -643,7 +650,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -720,7 +728,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -801,7 +810,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -882,7 +892,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -959,7 +970,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1036,7 +1048,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1113,7 +1126,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1190,7 +1204,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1271,7 +1286,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1348,7 +1364,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1425,7 +1442,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1502,7 +1520,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1579,7 +1598,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1656,7 +1676,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1733,7 +1754,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1810,7 +1832,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1887,7 +1910,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -1968,7 +1992,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2049,7 +2074,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2130,7 +2156,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2211,7 +2238,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2290,7 +2318,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2371,7 +2400,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2448,7 +2478,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2525,7 +2556,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2602,7 +2634,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2679,7 +2712,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2756,7 +2790,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2833,7 +2868,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2914,7 +2950,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -2991,7 +3028,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3068,7 +3106,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3149,7 +3188,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3230,7 +3270,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3312,7 +3353,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3394,7 +3436,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3473,7 +3516,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3550,7 +3594,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3627,7 +3672,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3708,7 +3754,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3785,7 +3832,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3862,7 +3910,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -3939,7 +3988,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4020,7 +4070,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4097,7 +4148,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4174,7 +4226,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4255,7 +4308,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4336,7 +4390,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4413,7 +4468,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4490,7 +4546,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4567,7 +4624,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4644,7 +4702,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4721,7 +4780,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4798,7 +4858,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4875,7 +4936,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -4952,7 +5014,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5033,7 +5096,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5114,7 +5178,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5196,7 +5261,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5277,7 +5343,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5355,7 +5422,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5436,7 +5504,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5513,7 +5582,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5594,7 +5664,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5671,7 +5742,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5752,7 +5824,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5829,7 +5902,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5906,7 +5980,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -5983,7 +6058,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6060,7 +6136,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6137,7 +6214,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6218,7 +6296,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6299,7 +6378,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6381,7 +6461,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6463,7 +6544,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6542,7 +6624,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6619,7 +6702,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6700,7 +6784,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6781,7 +6866,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6858,7 +6944,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -6935,7 +7022,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7012,7 +7100,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7089,7 +7178,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7170,7 +7260,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7247,7 +7338,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7324,7 +7416,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7401,7 +7494,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7478,7 +7572,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7555,7 +7650,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7632,7 +7728,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7709,7 +7806,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7786,7 +7884,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7863,7 +7962,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -7940,7 +8040,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8017,7 +8118,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8098,7 +8200,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8179,7 +8282,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8261,7 +8365,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8342,7 +8447,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8421,7 +8527,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8502,7 +8609,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8583,7 +8691,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8660,7 +8769,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8737,7 +8847,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8818,7 +8929,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8895,7 +9007,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -8976,7 +9089,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9053,7 +9167,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9130,7 +9245,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9207,7 +9323,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9288,7 +9405,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9369,7 +9487,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9451,7 +9570,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9533,7 +9653,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9611,7 +9732,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9689,7 +9811,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9770,7 +9893,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9847,7 +9971,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -9924,7 +10049,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10005,7 +10131,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10082,7 +10209,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10163,7 +10291,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10244,7 +10373,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10325,7 +10455,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10406,7 +10537,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10483,7 +10615,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10564,7 +10697,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10645,7 +10779,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10722,7 +10857,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10799,7 +10935,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10876,7 +11013,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -10953,7 +11091,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11030,7 +11169,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11107,7 +11247,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11188,7 +11329,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11270,7 +11412,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11352,7 +11495,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11434,7 +11578,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11513,7 +11658,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11595,7 +11741,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11672,7 +11819,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11749,7 +11897,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11826,7 +11975,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11903,7 +12053,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -11980,7 +12131,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12057,7 +12209,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12134,7 +12287,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12211,7 +12365,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12288,7 +12443,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12369,7 +12525,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12450,7 +12607,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12532,7 +12690,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12614,7 +12773,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12692,7 +12852,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12770,7 +12931,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12847,7 +13009,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -12924,7 +13087,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13001,7 +13165,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13082,7 +13247,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13159,7 +13325,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13240,7 +13407,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13317,7 +13485,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13394,7 +13563,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13471,7 +13641,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13548,7 +13719,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13625,7 +13797,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13702,7 +13875,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13779,7 +13953,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13856,7 +14031,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -13933,7 +14109,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14010,7 +14187,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14087,7 +14265,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14168,7 +14347,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14249,7 +14429,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14332,7 +14513,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14414,7 +14596,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14497,7 +14680,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14575,7 +14759,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14657,7 +14842,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14734,7 +14920,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14811,7 +14998,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14888,7 +15076,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -14965,7 +15154,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15042,7 +15232,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15119,7 +15310,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15196,7 +15388,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15273,7 +15466,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15350,7 +15544,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15431,7 +15626,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15512,7 +15708,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15594,7 +15791,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15676,7 +15874,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15753,7 +15952,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15832,7 +16032,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15909,7 +16110,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -15986,7 +16188,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16063,7 +16266,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16140,7 +16344,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16217,7 +16422,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16294,7 +16500,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16371,7 +16578,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16452,7 +16660,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16533,7 +16742,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16610,7 +16820,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16687,7 +16898,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16764,7 +16976,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16845,7 +17058,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16922,7 +17136,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -16999,7 +17214,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17076,7 +17292,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17153,7 +17370,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17230,7 +17448,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17311,7 +17530,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17389,7 +17609,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17471,7 +17692,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17549,7 +17771,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17627,7 +17850,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17705,7 +17929,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17782,7 +18007,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17859,7 +18085,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -17936,7 +18163,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18013,7 +18241,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18090,7 +18319,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18167,7 +18397,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18244,7 +18475,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18321,7 +18553,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18398,7 +18631,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18479,7 +18713,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18560,7 +18795,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18641,7 +18877,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18722,7 +18959,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18800,7 +19038,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18879,7 +19118,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -18960,7 +19200,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19037,7 +19278,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19114,7 +19356,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19191,7 +19434,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19268,7 +19512,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19349,7 +19594,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19426,7 +19672,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19503,7 +19750,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19584,7 +19832,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19661,7 +19910,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19738,7 +19988,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19815,7 +20066,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19892,7 +20144,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -19969,7 +20222,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20046,7 +20300,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20123,7 +20378,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20200,7 +20456,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20277,7 +20534,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20358,7 +20616,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20435,7 +20694,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20517,7 +20777,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20594,7 +20855,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20673,7 +20935,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20750,7 +21013,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20827,7 +21091,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20904,7 +21169,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -20981,7 +21247,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21058,7 +21325,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21135,7 +21403,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21212,7 +21481,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21289,7 +21559,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21366,7 +21637,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21443,7 +21715,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21524,7 +21797,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21605,7 +21879,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21682,7 +21957,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21760,7 +22036,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21837,7 +22114,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21914,7 +22192,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -21991,7 +22270,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22072,7 +22352,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22149,7 +22430,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22230,7 +22512,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22311,7 +22594,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22392,7 +22676,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22469,7 +22754,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22546,7 +22832,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22623,7 +22910,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22700,7 +22988,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22777,7 +23066,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22858,7 +23148,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -22935,7 +23226,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23012,7 +23304,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23089,7 +23382,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23166,7 +23460,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23243,7 +23538,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23320,7 +23616,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23401,7 +23698,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23479,7 +23777,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23558,7 +23857,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23635,7 +23935,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23716,7 +24017,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23793,7 +24095,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23874,7 +24177,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -23951,7 +24255,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -24028,7 +24333,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -24105,7 +24411,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -24186,7 +24493,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -24263,7 +24571,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",

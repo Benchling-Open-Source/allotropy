@@ -1,11 +1,11 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2024/09/qpcr.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/REC/2026/03/qpcr.manifest",
     "qpcr aggregate document": {
         "data system document": {
             "ASM file identifier": "appbio_quantstudio_designandanalysis_QS7_sample_and_target_name_columns.json",
             "data system instance identifier": "localhost",
             "ASM converter name": "allotropy_appbio_quantstudio_design_&_analysis",
-            "ASM converter version": "0.1.151",
+            "ASM converter version": "0.1.152",
             "file name": "appbio_quantstudio_designandanalysis_QS7_sample_and_target_name_columns.xlsx",
             "UNC path": "tests/parsers/appbio_quantstudio_designandanalysis/testdata/appbio_quantstudio_designandanalysis_QS7_sample_and_target_name_columns.xlsx"
         },
@@ -81,7 +81,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         },
                         {
                             "device control aggregate document": {
@@ -145,7 +146,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "RNase P"
+                            "target DNA description": "RNase P",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
@@ -226,7 +228,8 @@
                                     }
                                 ]
                             },
-                            "target DNA description": "Illumina Adapter"
+                            "target DNA description": "Illumina Adapter",
+                            "experimental data identifier": "QS7_Standard_Curve.eds"
                         }
                     ],
                     "experimental data identifier": "QS7_Standard_Curve.eds",
